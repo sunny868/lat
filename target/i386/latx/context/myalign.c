@@ -2086,7 +2086,7 @@ int kzt_init(char** argv, int argc,char** target_argv, int target_argc,
         elf_header = LoadFromNative(bprm, info);
     }
     if (option_kzt == 1 && elf_header) {
-        option_kzt = CheckEnableKZT(elf_header, target_argv, target_argc);
+        option_kzt = 1;// CheckEnableKZT(elf_header, target_argv, target_argc);
     }
     const char* prog = argv[1];
     LoadEnvVars(my_context);

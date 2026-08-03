@@ -71,7 +71,7 @@ make_cmd() {
                 --disable-docs ${low_mem_mode} ${avx_support}
         elif [ "$opt_level" = "1" ] ; then
             ../configure --target-list=x86_64-linux-user --enable-latx \
-                --disable-debug-info --optimize-O1 --extra-ldflags=-ldl --enable-kzt \
+                --enable-debug --optimize-O1 --extra-ldflags=-ldl --enable-kzt \
                 --disable-docs ${low_mem_mode} ${avx_support}
         elif [ "$opt_level" = "2" ] ; then
             ../configure --target-list=x86_64-linux-user --enable-latx \

@@ -62,6 +62,7 @@ GO("libxcb-sync.so.1", libxcbsync)
 GO("libxcb-xinerama.so.0", libxcbxinerama)
 GO("libxcb-xinput.so.0", libxcbxinput)
 GO("libxcb-present.so.0", libxcbpresent)
+GO("libadd.so", add)
 
 
 GOALIAS("libxcb-cursor.so", libxcbcursor)

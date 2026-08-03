@@ -1476,5 +1476,6 @@ void uFbuuiup(uintptr_t fcn);
 void fFbu(uintptr_t fcn);
 void pFbuuUUU(uintptr_t fcn);
 void pFbuuuuuwwuuuuUUUup(uintptr_t fcn);
+void iFppA(uintptr_t fcn);
 //endxcbV2
 #endif // __WRAPPER_H_
