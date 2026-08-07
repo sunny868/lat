@@ -1,45 +1,37 @@
-#include "config-host.h"
-#if !(defined(GO) && defined(GOM) && defined(GO2) && defined(DATA) && defined(GOS))
+#if !(defined(GO) && defined(GOM) && defined(GO2) && defined(DATA))
 #error Meh...
 #endif
-//
-////socklen_t is u32
-//// typedef unsigned long int nfds_t;
-//// pid_t is S32
-//// key_t is S32
-//// uid_t is u32
-//// gid_t is u32
-//
+
 //GO(a64l, lFp)
 //GO(abort, vFv)
-////DATAB(__abort_msg,
+////DATAB(__abort_msg, 
 //GO(abs, iFi)
 //GO(accept, iFipp)
 //GO(accept4, iFippi)
 //GOW(access, iFpi)
 //GO(acct, iFp)
-//GOW(addmntent, iFpp)
+//GOW(addmntent, iFSp)
 //GOW(addseverity, iFip)
 //GOW(adjtime, iFpp)
 //GO(__adjtimex, iFp)
 //GOW(adjtimex, iFp)
-////GOW(advance,
+////GOW(advance, 
 //GO(alarm, uFu)
-//GO(aligned_alloc, pFUU)
+//GO(aligned_alloc, pFLL)
 //GOW(alphasort, iFpp)
 //GOW(alphasort64, iFpp)
-////GO(__arch_prctl,
-////GOW(arch_prctl,
-////DATA(argp_err_exit_status,
-////GOW(argp_error, vF!pV)
-////GOW(argp_failure, vF!iipV)
-////GOW(argp_help, vF!pup)
-////GOW(argp_parse, iF!ipupp)
-////DATAB(argp_program_bug_address,
-////DATAB(argp_program_version,
-////DATAB(argp_program_version_hook,
-////GOW(argp_state_help, vF!pu)
-////GOW(argp_usage, vF!)
+////GO(__arch_prctl, 
+////GOW(arch_prctl, 
+////DATA(argp_err_exit_status, 4)
+//GOWM(argp_error, vFppV)
+//GOWM(argp_failure, vFpiipV)
+////GOWM(argp_help, vFpSup)
+//GOWM(argp_parse, iFpipupp)
+////DATAB(argp_program_bug_address, 8)
+////DATAB(argp_program_version, 8)
+////DATAM(argp_program_version_hook, 8)
+////GOWM(argp_state_help, vFpSu)
+////GOWM(argp_usage, vFp)
 //GOW(argz_add, iFppp)
 //GOW(argz_add_sep, iFpppi)
 //GOW(argz_append, iFpppL)
@@ -57,49 +49,49 @@
 //GOW(argz_stringify, vFpLi)
 //GO(asctime, pFp)
 //GOW(asctime_r, pFpp)
-//GOM(__asprintf, iFEppV)
-//GOWM(asprintf, iFEppV)
-//GOM(__asprintf_chk, iFEpipV)
+//GOM(__asprintf, iFppV)
+//GOWM(asprintf, iFppV)
+//GOM(__asprintf_chk, iFpipV)
 //GO(__assert, vFppi)
 //GO(__assert_fail, vFppup)
 //GO(__assert_perror_fail, vFipup)
-//GOM(atexit, iFEp)
+//GOM(atexit, iFp)
 //GO(atof, dFp)
 //GO(atoi, iFp)
 //GO(atol, lFp)
 //GO(atoll, IFp)
-////GO(authdes_create, !Fpup!)
-////GO(authdes_getucred, iF!pppp)
-////GO(authdes_pk_create, !Fp!up!)
-////GO(_authenticate, uF!!)
-////GO(authnone_create, !Fv)
-////GO(authunix_create, !Fpuuip)
-////GO(authunix_create_default, !Fv)
-////GO(__backtrace,
-//GOWM(backtrace, iFEpi)
-////GO(__backtrace_symbols,
-//GOWM(backtrace_symbols, pFEpi)
-////GO(__backtrace_symbols_fd,
-//GOWM(backtrace_symbols_fd, vFEpii)
+////GOM(authdes_create, pFpupp)
+////GO(authdes_getucred, "iF!pppp")
+////GOM(authdes_pk_create, pFppupp)
+////GOM(_authenticate, uFpp)
+////GOM(authnone_create, pFv)
+////GOM(authunix_create, pFpuuip)
+////GOM(authunix_create_default, pFv)
+////GO(__backtrace, 
+//GOWM(backtrace, iFpi)
+////GO(__backtrace_symbols, 
+//GOWM(backtrace_symbols, pFpi)
+////GO(__backtrace_symbols_fd, 
+//GOWM(backtrace_symbols_fd, vFpii)
 //GOW(basename, pFp)
 //GO(bcmp, iFppL)
 //GO(bcopy, vFppL)
-////GO(bdflush, // Deprecated
+////GO(bdflush, 
 //GOW(bind, iFipu)
-////GO(bindresvport, iFi!)
+//GO(bindresvport, iFip)
 //GOW(bindtextdomain, pFpp)
 //GOW(bind_textdomain_codeset, pFpp)
 //GOW(brk, iFp)
-////GO(__bsd_getpgrp,
-////GOW(bsd_signal,
-//GOM(bsearch, pFEppLLp)
+////GO(__bsd_getpgrp, 
+//GO2(bsd_signal, pFip, my_signal)
+//GOM(bsearch, pFppLLp)
 //GOW(btowc, uFi)
 //GO(__bzero, vFpL)
 //GO(bzero, vFpL)
-////GO(c16rtomb, LFpW!)
+//GO(c16rtomb, LFpWp)
 //GOW(c32rtomb, LFpup)
 //GOW(calloc, pFLL)
-////GO(callrpc, iFpLLL@p@p)
+////GOM(callrpc, iFpiiipppp)
 ////GO(__call_tls_dtors, vFv)
 //GOW(canonicalize_file_name, pFp)
 //GO(capget, iFpp)
@@ -107,120 +99,158 @@
 //GO(catclose, iFp)
 //GO(catgets, pFpiip)
 //GO(catopen, pFpi)
-////GO(cbc_crypt, // Deprecated
+//#ifdef STATICBUILD
+////GO(cbc_crypt, iFppuup)
+//#else
+//GO(cbc_crypt, iFppuup)
+//#endif
 //GO(cfgetispeed, uFp)
 //GO(cfgetospeed, uFp)
 //GO(cfmakeraw, vFp)
+//GO(cfree, vFp)
 //GO(cfsetispeed, iFpu)
 //GO(cfsetospeed, iFpu)
 //GO(cfsetspeed, iFpu)
 //GOW(chdir, iFp)
-//DATA(__check_rhosts_file, sizeof(void*))
-////GO(chflags,
-////GO(__chk_fail,
+//DATA(__check_rhosts_file, 8)
+////GO(chflags, 
+////GO(__chk_fail, 
 //GOW(chmod, iFpu)
 //GOW(chown, iFpuu)
 //GO(chroot, iFp)
 //GOW(clearenv, iFv)
-//GO(clearerr, vFp)
-//GO(clearerr_unlocked, vFp)
-////GO(clnt_broadcast,
-////GO(clnt_create, !FpLLp)
+//GO(clearerr, vFS)
+//GO(clearerr_unlocked, vFS)
+//#ifdef STATICBUILD
+////GO(clnt_broadcast, 
+////GO(clnt_create, "!FpLLp")
+////GO(clnt_pcreateerror, vFp)
+////GO(clnt_perrno, vFu)
+////GO(clnt_perror, "vF!p")
+////GO(clntraw_create, "!FLL")
+////GO(clnt_spcreateerror, pFp)
+////GO(clnt_sperrno, pFu)
+////GO(clnt_sperror, "pF!p")
+////GO(clnttcp_create, "!F!LLpuu")
+////GO(clntudp_bufcreate, "!F!LL?puu")
+////GO(clntudp_create, "!F!LL?p")
+////GO(clntunix_create, "!F!LLpuu")
+//#else
+////GOM(clnt_broadcast, uFLLLppppp)
+////GOM(clnt_create, pFpuup)
 //GO(clnt_pcreateerror, vFp)
 //GO(clnt_perrno, vFu)
-////GO(clnt_perror, vF!p)
-////GO(clntraw_create, !FLL)
+////GOM(clnt_perror, vFpp)
+////GOM(clntraw_create, pFLL)
 //GO(clnt_spcreateerror, pFp)
 //GO(clnt_sperrno, pFu)
-////GO(clnt_sperror, pF!p)
-////GO(clnttcp_create, !F!LLpuu)
-////GO(clntudp_bufcreate, !F!LL?puu)
-////GO(clntudp_create, !F!LL?p)
-////GO(clntunix_create, !F!LLpuu)
+////GOM(clnt_sperror, pFpp)
+////GOM(clnttcp_create, pFpLLpuu)
+////GO(clntudp_bufcreate, "!F!LL?puu")
+////GO(clntudp_create, "!F!LL?p")
+////GOM(clntunix_create, pFpLLpuu)
+//#endif
 //GO(clock, lFv)
 //GO(clock_adjtime, iFip)
-////GO(__clock_getcpuclockid,
+////GO(__clock_getcpuclockid, 
 //GOW(clock_getcpuclockid, iFip)
-////GO(__clock_getres,
+////GO(__clock_getres, 
 //GOW(clock_getres, iFip)
-////GO(__clock_gettime,
+////GO(__clock_gettime, 
 //GOW(clock_gettime, iFip)
-////GO(__clock_nanosleep,
+////GO(__clock_nanosleep, 
 //GOW(clock_nanosleep, iFiipp)
-////GO(__clock_settime,
+////GO(__clock_settime, 
 //GOW(clock_settime, iFip)
-////GO(__clone,
-//GOWM(clone, iFEppipppp)
+////GO(__clone, 
+//GOWM(clone, iFppipppp)
 //GO(__close, iFi)
 //GOW(close, iFi)
 //GOW(closedir, iFp)
 //GO(closelog, vFv)
-////GO(__close_nocancel,
+////GO(__close_nocancel, 
+//GO(close_range, iFuui)
 //GO(__cmsg_nxthdr, pFpp)
 //GO(confstr, LFipL)
-////GO(__confstr_chk,
+//GO(__confstr_chk, LFipLL)
 //GOW(__connect, iFipu)
 //GOW(connect, iFipu)
 //GO(copy_file_range, lFipipLu)
-////GO(__copy_grp,
-//GOW(copysign, dFdd)
-//GOW(copysignf, fFff)
-//GOW(copysignl, DFDD)
+////GO(__copy_grp, 
 //GOW(creat, iFpu)
 //GOW(creat64, iFpu)
-////GO(create_module,
+////GO(create_module, 
 //GO(ctermid, pFp)
 //GO(ctime, pFp)
 //GO(ctime_r, pFpp)
-////DATA(__ctype32_b,
-////DATA(__ctype32_tolower,
-////DATA(__ctype32_toupper,
-//DATA(__ctype_b, sizeof(void*))
+//#ifdef ANDROID
+//DATA(_ctype_, 8)
+//#else
+////DATA(_ctype_, 8) //is it even used on Linux?
+//#endif
+////DATA(__ctype32_b, 
+////DATA(__ctype32_tolower, 
+////DATA(__ctype32_toupper, 
+//#ifdef STATICBUILD
+////DATA(__ctype_b, 8)
+//#else
+//DATA(__ctype_b, 8)
+//#endif
 //GO(__ctype_b_loc, pFv)
 //GO(__ctype_get_mb_cur_max, LFv)
-////GO(__ctype_init,
-//DATAM(__ctype_tolower, sizeof(void*))
+////GO(__ctype_init, 
+//DATAM(__ctype_tolower, 8)
 //GO(__ctype_tolower_loc, pFv)
-//DATAM(__ctype_toupper, sizeof(void*))
+//DATAM(__ctype_toupper, 8)
 //GO(__ctype_toupper_loc, pFv)
-////DATAB(__curbrk,
+////DATAB(__curbrk, 
 //GO(cuserid, pFp)
-//GOM(__cxa_atexit, iFEppp)
-////GO(__cxa_at_quick_exit, /* at_quick_exit has signature iF@ -> */ iF@pp)
-//GOM(__cxa_finalize, vFEp)
-//GOM(__cxa_thread_atexit_impl, iFEppp)
-////GO(__cyg_profile_func_enter,
-////GO(__cyg_profile_func_exit,
+//GOM(__cxa_atexit, iFppp)
+////GO(__cxa_at_quick_exit, "/* at_quick_exit has signature iF@ -> */ iF@pp")
+//GOM(__cxa_finalize, vFp)
+//GOM(__cxa_thread_atexit_impl, iFppp)
+////GO(__cyg_profile_func_enter, 
+////GO(__cyg_profile_func_exit, 
 //GO(daemon, iFii)
 //DATAB(__daylight, 4)
 //DATA(daylight, 4)
 //GO(__dcgettext, pFppi)
 //GOW(dcgettext, pFppi)
 //GOW(dcngettext, pFpppLi)
-//GO(__default_morecore, pFU)
-////GO(delete_module, // Deprecated
-////GO(des_setparity, // Deprecated
+////GO(__default_morecore, 
+//#ifdef STATICBUILD
+////GO(delete_module, 
+////GO(des_setparity, 
+//#else
+//GOM(delete_module, iFpu)
+//GO(des_setparity, vFp)
+//#endif
 //GO(__dgettext, pFpp)
 //GOW(dgettext, pFpp)
 //GO(difftime, dFll)
 //GO(dirfd, iFp)
 //GO(dirname, pFp)
-//GO(div, LFii)
-////GO(_dl_addr,
-////GO(_dl_catch_error,
-////GO(_dl_catch_exception,
-//GOWM(dl_iterate_phdr, iFEpp)
-////GO(_dl_mcount_wrapper,
-////GO(_dl_mcount_wrapper_check,
-////DATAB(_dl_open_hook,
-////DATAB(_dl_open_hook2,
-////GO(_dl_signal_error,
-////GO(_dl_signal_exception,
-////GO(_dl_sym,
-////GO(_dl_vsym,
+//GO(div, UFii)
+////GO(_dl_addr, 
+////GO(_dl_catch_error, 
+////GO(_dl_catch_exception, 
+//GOWM(dl_iterate_phdr, iFpp)
+////GO(_dl_mcount_wrapper, 
+//#ifdef STATICBUILD
+////GO(_dl_mcount_wrapper_check, vFp)
+//#else
+//GO(_dl_mcount_wrapper_check, vFp)
+//#endif
+////DATAB(_dl_open_hook, 
+////DATAB(_dl_open_hook2, 
+////GO(_dl_signal_error, 
+////GO(_dl_signal_exception, 
+////GO(_dl_sym, 
+////GO(_dl_vsym, 
 //GOW(dngettext, pFpppL)
-//GOM(dprintf, iFEipV)
-//GOM(__dprintf_chk, iFEiipV)
+//GOW(dn_skipname, iFpp)
+//GOM(dprintf, iFipV)
+//GOM(__dprintf_chk, iFiipV)
 //GO(drand48, dFv)
 //GO(drand48_r, iFpp)
 //GOW(dup, iFi)
@@ -231,7 +261,11 @@
 //GOW(duplocale, pFp)
 //GO(dysize, iFi)
 //GOW(eaccess, iFpi)
-////GO(ecb_crypt,
+//#ifdef STATICBUILD
+////GO(ecb_crypt, 
+//#else
+//GO(ecb_crypt, iFppuu)
+//#endif
 //GO(ecvt, pFdipp)
 //GOW(ecvt_r, iFdipppL)
 //GO(endaliasent, vFv)
@@ -239,21 +273,25 @@
 //GO(endgrent, vFv)
 //GO(endhostent, vFv)
 //GO(__endmntent, iFp)
-//GOW(endmntent, iFp)
+//GOW(endmntent, iFS)
 //GO(endnetent, vFv)
 //GO(endnetgrent, vFv)
 //GO(endprotoent, vFv)
 //GO(endpwent, vFv)
 //GO(endrpcent, vFv)
 //GO(endservent, vFv)
-////GO(endsgent,
+//#ifdef STATICBUILD
+////GO(endsgent, 
+//#else
+//GO(endsgent, vFv)
+//#endif
 //GO(endspent, vFv)
 //GOW(endttyent, iFv)
 //GO(endusershell, vFv)
 //GOW(endutent, vFv)
 //GO(endutxent, vFv)
-//DATAM(environ, sizeof(void*))
-//DATAM(__environ, sizeof(void*))
+//DATAM(environ, 8)
+//DATAM(__environ, 8)
 //GO(envz_add, iFpppp)
 //GO(envz_entry, pFpLp)
 //GO(envz_get, pFpLp)
@@ -265,250 +303,265 @@
 //#ifdef NOALIGN
 //GO(epoll_ctl, iFiiip)
 //GO(epoll_pwait, iFipiip)
+//GO(epoll_pwait2, iFipipp)
 //GO(epoll_wait, iFipii)
 //#else
-//GOM(epoll_ctl, iFEiiip)   // struct epoll_event is 12byte on x86_64 and 16bytes (8bytes aligned) on arm64
-//GOM(epoll_pwait, iFEipiip)
-//GOM(epoll_wait, iFEipii)
+//GOM(epoll_ctl, iFiiip)
+//GOM(epoll_pwait, iFipiip)
+//GOM(epoll_pwait2, iFipipp)
+//GOM(epoll_wait, iFipii)
 //#endif
 //GO(erand48, dFp)
 //GOW(erand48_r, iFppp)
-//GOM(err, vFEipV)
-////DATAB(errno,
+//GOM(err, vFipV)
+////DATAB(errno, 
 //GO(__errno_location, pFv)
-////GOW(error, vFiipV)
-////GOW(error_at_line, vFiipupV)
-////DATAB(error_message_count,
-////DATAB(error_one_per_line,
-////DATAB(error_print_progname,
-//GOM(errx, vFEipV)
-////GO(ether_aton, !Fp)
-////GO(ether_aton_r, !Fp!)
-////GO(ether_hostton, iFp!)
-////GO(ether_line, iFp!p)
-////GO(ether_ntoa, pF!)
-////GO(ether_ntoa_r, pF!p)
-////GO(ether_ntohost, iFp!)
+//GOWM(error, vFiipV)
+//GOWM(error_at_line, vFiipupV)
+////DATAB(error_message_count, 4)
+////DATAB(error_one_per_line, 4)
+//DATAM(error_print_progname, 8)
+//GOM(errx, vFipV)
+//#ifdef STATICBUILD
+////GO(ether_aton, pFp)
+////GO(ether_aton_r, pFpp)
+////GO(ether_hostton, iFpp)
+////GO(ether_line, iFppp)
+////GO(ether_ntoa, pFp)
+////GO(ether_ntoa_r, pFpp)
+////GO(ether_ntohost, iFpp)
+//#else
+//GO(ether_aton, pFp)
+//GO(ether_aton_r, pFpp)
+//GO(ether_hostton, iFpp)
+//GO(ether_line, iFppp)
+//GO(ether_ntoa, pFp)
+//GO(ether_ntoa_r, pFpp)
+//GO(ether_ntohost, iFpp)
+//#endif
 //GOW(euidaccess, iFpi)
 //GO(eventfd, iFui)
 //GO(eventfd_read, iFip)
-//GO(eventfd_write, iFiL)
-//GOM(execl, iFEpV) // First argument is also part of the variadic
-//GOM(execle, iFEpV) // First argument is also part of the variadic
-//GOM(execlp, iFEpV) // First argument is also part of the variadic
-//GOM(execv, iFEpp)
-//GOWM(execve, iFEppp)
-//GOM(execvp, iFEpp)
-//GOW(execvpe, iFppp)
-//GOM(_exit, vFEi)
-//GOM(exit, vFEi)
+//GO(eventfd_write, iFiU)
+//GOM(execl, iFpV) // First argument is also part of the variadic
+//GOM(execle, iFpV) // First argument is also part of the variadic
+//GOM(execlp, iFpV) // First argument is also part of the variadic
+//GOM(execv, iFpp)
+//GOM(execve, iFppp)
+//GOM(execvp, iFpp)
+//GOWM(execvpe, iFppp)
+//GOM(_exit, vFi)
+//GOM(exit, vFi)
 //GOW(_Exit, vFi)
 //GO(explicit_bzero, vFpL)
 //GO(__explicit_bzero_chk, vFpLL)
 //GO(faccessat, iFipii)
 //GOW(fallocate, iFiill)
-//GO(fallocate64, iFiill)
+//GO(fallocate64, iFiiII)
 //GO(fanotify_init, iFuu)
-//GO(fanotify_mark, iFiuLip)
-////GO(fattach,
+//GO(fanotify_mark, iFiuUip)
+////GO(fattach, 
 //GO(__fbufsize, LFp)
 //GOW(fchdir, iFi)
-////GO(fchflags,
+////GO(fchflags, 
 //GOW(fchmod, iFiu)
 //GO(fchmodat, iFipui)
 //GOW(fchown, iFiuu)
 //GO(fchownat, iFipuui)
-//GO(fclose, iFp)
+//GO(fclose, iFS)
 //GOW(fcloseall, iFv)
-//GOWM(__fcntl, iFEiiN)
-//GOWM(fcntl, iFEiiN)
-//GOWM(fcntl64, iFEiiN)
+//GOWM(__fcntl, iFiiN)
+//GOWM(fcntl, iFiiN)
+//GOWM(fcntl64, iFiiN)
 //GO(fcvt, pFdipp)
 //GO(fcvt_r, iFdipppL)
 //GO(fdatasync, iFi)
 //GO(__fdelt_chk, LFL)
-////GO(__fdelt_warn,
-////GO(fdetach,
-//GO(fdopen, pFip)
+////GO(__fdelt_warn, 
+////GO(fdetach, 
+//GO(fdopen, SFip)
 //GOW(fdopendir, pFi)
-////GO(__fentry__,
-//GOW(feof, iFp)
-//GOW(feof_unlocked, iFp)
-//GOW(ferror, iFp)
-//GOW(ferror_unlocked, iFp)
+////GO(__fentry__, 
+//GOW(feof, iFS)
+//GOW(feof_unlocked, iFS)
+//GOW(ferror, iFS)
+//GOW(ferror_unlocked, iFS)
 //GO(fexecve, iFipp)
 //GOW(fflush, iFS)
 //GO(fflush_unlocked, iFS)
-////GO(__ffs,
+////GO(__ffs, 
 //GO(ffs, iFi)
-//GO(ffsl, iFI)
+//GO(ffsl, iFl)
 //GO(ffsll, iFI)
-//GOW(fgetc, iFp)
-//GOW(fgetc_unlocked, iFp)
-//GO(fgetgrent, pFp)
-//GOW(fgetgrent_r, iFpppLp)
-//GO(fgetpos, iFpp)
-//GO(fgetpos64, iFpp)
-//GO(fgetpwent, pFp)
-//GOW(fgetpwent_r, iFpppLp)
-//GOW(fgets, pFpip)
+//GOW(fgetc, iFS)
+//GOW(fgetc_unlocked, iFS)
+//GO(fgetgrent, pFS)
+//GOW(fgetgrent_r, iFSppLp)
+//GO(fgetpos, iFSp)
+//GO(fgetpos64, iFSp)
+//GO(fgetpwent, pFS)
+//GOW(fgetpwent_r, iFSppLp)
+//GOW(fgets, pFpiS)
 //GO(__fgets_chk, pFpLip)
-////GO(fgetsgent,
-////GOW(fgetsgent_r,
-//GO(fgetspent, pFp)
-//GOW(fgetspent_r, iFpppLp)
-//GOW(fgets_unlocked, pFpip)
+//#ifdef STATICBUILD
+////GO(fgetsgent, 
+////GOW(fgetsgent_r, 
+//#else
+//GO(fgetsgent, pFS)
+//GOW(fgetsgent_r, iFSppLp)
+//#endif
+//GO(fgetspent, pFS)
+//GOW(fgetspent_r, iFSppLp)
+//GOW(fgets_unlocked, pFpiS)
+//#ifdef STATICBUILD
 ////GO(__fgets_unlocked_chk,
-//GOW(fgetwc, uFp)
-//GOW(fgetwc_unlocked, uFp)
-//GO(fgetws, pFpip)
-////GO(__fgetws_chk,
-//GO(fgetws_unlocked, pFpip)
-////GO(__fgetws_unlocked_chk,
+//#else
+//GO(__fgets_unlocked_chk, pFpLiS)
+//#endif
+//GOW(fgetwc, uFS)
+//GOW(fgetwc_unlocked, uFS)
+//GO(fgetws, pFpiS)
+////GO(__fgetws_chk, 
+//GO(fgetws_unlocked, pFpiS)
+////GO(__fgetws_unlocked_chk, 
 //GO(fgetxattr, lFippL)
 //GOW(fileno, iFS)
 //GOW(fileno_unlocked, iFS)
-//GO(__finite, iFd)
-//GOW(finite, iFd)
-//GO(__finitef, iFf)
-//GOW(finitef, iFf)
-//GO(__finitel, iFD)
-//GOW(finitel, iFD)
 //GO(__flbf, iFp)
 //GO(flistxattr, lFipL)
 //GOW(flock, iFii)
-//GOW(flockfile, vFp)
+//GOW(flockfile, vFS)
 //GOW(_flushlbf, vFv)
-//GO(fmemopen, pFpLp)
+//GO(fmemopen, SFpLp)
 //GO(fmtmsg, iFlpippp)
 //GO(fnmatch, iFppi)
-//GOM(fopen, pFEpp)
-//GOWM(fopen64, pFEpp)
-//GOM(fopencookie, pFEppV)
-////GO(__fork,
-//GOWM(fork, iFEv)
-////GO(__fortify_fail,
+//GOM(fopen, SFpp)
+//GOWM(fopen64, SFpp)
+//GOM(fopencookie, pFppV)
+////GO(__fork, 
+//GOWM(fork, iFv)
+////GO(__fortify_fail, 
 //GO(fpathconf, lFii)
 //GO(__fpending, LFp)
-//GOM(fprintf, iFEppV)
-//GOM(__fprintf_chk, iFEpipV)
-////DATA(__fpu_control,
+//GOM(fprintf, iFSpV)
+//GOM(__fprintf_chk, iFpipV)
+////DATA(__fpu_control, 
 //GO(__fpurge, vFp)
-//GO(fputc, iFip)
-//GO(fputc_unlocked, iFip)
-//GOW(fputs, iFpp)
-//GOW(fputs_unlocked, iFpp)
-//GO(fputwc, uFip)
-//GO(fputwc_unlocked, uFip)
-//GO(fputws, iFpp)
-//GO(fputws_unlocked, iFpp)
-//GO(fread, LFpLLp)
+//GO(fputc, iFiS)
+//GO(fputc_unlocked, iFiS)
+//GOW(fputs, iFpS)
+//GOW(fputs_unlocked, iFpS)
+//GO(fputwc, uFiS)
+//GO(fputwc_unlocked, uFiS)
+//GO(fputws, iFpS)
+//GO(fputws_unlocked, iFpS)
+//GO(fread, LFpLLS)
 //GO(__freadable, iFp)
 //GO(__fread_chk, LFpLLLp)
 //GO(__freading, iFp)
-//GO(fread_unlocked, LFpLLp)
+//GO(fread_unlocked, LFpLLS)
 //GO(__fread_unlocked_chk, LFpLLLp)
-GOM(free, vFp)
-GOM(__free, vFp)
+//GO(free, vFp)
 //GO(freeaddrinfo, vFp)
 //GOW(freeifaddrs, vFp)
 //GO(__freelocale, vFp)
 //GOW(freelocale, vFp)
 //GO(fremovexattr, iFip)
-//GO(freopen, pFppp)
-//GO(freopen64, pFppp)
-//GOW(frexp, dFdp)
-//GOW(frexpf, fFfp)
-//GOW(frexpl, DFDp)
-//GOM(fscanf, iFEppV)
-//GO(fseek, iFpli)
-//GO(fseeko, iFpIi)
+//GO(freopen, SFppS)
+//GO(freopen64, SFppS)
+//GOM(fscanf, iFSpV)
+//GO(fseek, iFSli)
+//GO(fseeko, iFSli)
 //GO(__fseeko64, iFpli)
-//GO(fseeko64, iFpli)
+//GO(fseeko64, iFSIi)
 //GO(__fsetlocking, iFpi)
-//GO(fsetpos, iFpp)
-//GO(fsetpos64, iFpp)
+//GO(fsetpos, iFSp)
+//GO(fsetpos64, iFSp)
 //GO(fsetxattr, iFippLi)
-//GOM(fstat, iFEip)
-//GOM(fstat64, iFEip)
-//GOM(fstatat, iFEippi)
-//GOM(fstatat64, iFEippi)
+//GOM(fstat, iFip)
+//GOM(fstat64, iFip)
+//GOM(fstatat, iFippi)
+//GOM(fstatat64, iFippi)
 //GOW(fstatfs, iFip)
 //GOW(fstatfs64, iFip)
 //GOW(fstatvfs, iFip)
 //GOW(fstatvfs64, iFip)
 //GO(fsync, iFi)
-//GO(ftell, lFp)
-//GO(ftello, IFp)
+//GO(ftell, lFS)
+//GO(ftello, lFS)
 //GO(__ftello64, lFp)
-//GO(ftello64, lFp)
+//GO(ftello64, IFS)
 //GO(ftime, iFp)
 //GO(ftok, iFpi)
-//GO(ftruncate, iFiI)
-//GO(ftruncate64, iFil)
-//GOW(ftrylockfile, iFp)
+//GO(ftruncate, iFil)
+//GO(ftruncate64, iFiI)
+//GOW(ftrylockfile, iFS)
 //GOW(fts64_children, pFpi)
 //GOW(fts64_close, iFp)
-//GOWM(fts64_open, pFEpip)
+//GOWM(fts64_open, pFpip)
 //GOW(fts64_read, pFp)
 //GOW(fts64_set, iFppi)
 //GO(fts_children, pFpi)
 //GO(fts_close, iFp)
-//GOM(fts_open, pFEpip)
+//GOM(fts_open, pFpip)
 //GO(fts_read, pFp)
 //GO(fts_set, iFppi)
-//GOM(ftw, iFEppi)
-//GOM(ftw64, iFEppi)
-//GOW(funlockfile, vFp)
+//GOM(ftw, iFppi)
+//GOM(ftw64, iFppi)
+//GOW(funlockfile, vFS)
 //GO(futimens, iFip)
 //GOW(futimes, iFip)
 //GO(futimesat, iFipp)
-//GO(fwide, iFpi)
-//GOWM(fwprintf, iFEppV)
-//GOM(__fwprintf_chk, iFEpipV)
+//GO(fwide, iFSi)
+//GOWM(fwprintf, iFSpV)
+//GOM(__fwprintf_chk, iFpipV)
 //GO(__fwritable, iFp)
-//GO(fwrite, LFpLLp)
-//GO(fwrite_unlocked, LFpLLp)
+//GO(fwrite, LFpLLS)
+//GO(fwrite_unlocked, LFpLLS)
 //GO(__fwriting, iFp)
-////GO(fwscanf, iFppV)
-//GOM(__fxstat, iFEiip)
-//GOM(__fxstat64, iFEiip)
-//GOM(__fxstatat, iFEiippi)
-//GOM(__fxstatat64, iFEiippi)
-////GO(__gai_sigqueue,
+////GOM(fwscanf, iFSpV)
+//GOM(__fxstat, iFiip)
+//GOM(__fxstat64, iFiip)
+//GOM(__fxstatat, iFiippi)
+//GOM(__fxstatat64, iFiippi)
+////GO(__gai_sigqueue, 
+//GO(gai_cancel, iFp)
+//GO(gai_error, iFp)
 //GO(gai_strerror, pFi)
-////GO(__gconv_get_alias_db,
-////GO(__gconv_get_cache,
-////GO(__gconv_get_modules_db,
-////GO(__gconv_transliterate,
+//GO(gai_suspend, iFpip)
+////GO(__gconv_get_alias_db, 
+////GO(__gconv_get_cache, 
+////GO(__gconv_get_modules_db, 
+////GO(__gconv_transliterate, 
 //GO(gcvt, pFdip)
 //GO(getaddrinfo, iFpppp)
+////GOM(getaddrinfo_a, iFipip)
 //GO(getaliasbyname, pFp)
 //GO(getaliasbyname_r, iFpppLp)
 //GO(getaliasent, pFv)
 //GO(getaliasent_r, iFppLp)
-////GO(__getauxval,
-//GOWM(getauxval, LFEL)
+////GO(__getauxval, 
+//GOWM(getauxval, LFL)
 //GOW(get_avphys_pages, lFv)
-//GOW(getc, iFp)
+//GOW(getc, iFS)
 //GO(getchar, iFv)
 //GO(getchar_unlocked, iFv)
-//GOWM(getcontext, iFEp)
+//GOWM(getcontext, iFp)
 //GOW(getcpu, iFpp)
-//GOW(getc_unlocked, iFp)
+//GOW(getc_unlocked, iFS)
 //GO(get_current_dir_name, pFv)
 //GO(getcwd, pFpL)
 //GO(__getcwd_chk, pFpLL)
 //GO(getdate, pFp)
-////DATAB(getdate_err,
+////DATAB(getdate_err, 4)
 //GOW(getdate_r, iFpp)
-//GOW(__getdelim, lFppip)
-//GO(getdelim, lFppip)
+//GOW(__getdelim, lFppiS)
+//GO(getdelim, lFppiS)
 //GO(getdents64, lFipL)
-//GO(getdirentries, IFipUp)
+//GO(getdirentries, lFipLp)
 //GO(getdirentries64, lFipLp)
 //GO(getdomainname, iFpL)
-////GO(__getdomainname_chk,
+////GO(__getdomainname_chk, 
 //GOW(getdtablesize, iFv)
 //GOW(getegid, uFv)
 //GO(getentropy, iFpL)
@@ -537,31 +590,48 @@ GOM(__free, vFp)
 //GO(gethostent_r, iFppLpp)
 //GO(gethostid, lFv)
 //GOW(gethostname, iFpL)
-////GO(__gethostname_chk,
+//#ifdef STATICBUILD
+////GO(__gethostname_chk, iFpLL)  // it's sometimes not defined, like in LA64 plateform, so lets no wrap it for now
+//#else
+//GO(__gethostname_chk, iFpLL)
+//#endif
 //GOW(getifaddrs, iFp)
-////GO(getipv4sourcefilter, iFi??pp!)
+//GO(getipv4sourcefilter, iFiuuppp)
 //GOW(getitimer, iFup)
-////GO(get_kernel_syms, // Deprecated
-//GO(getline, lFppp)
+//#ifdef STATICBUILD
+////GO(get_kernel_syms, 
+//#else
+////GO(get_kernel_syms, 
+//#endif
+//GO(getline, lFppS)
 //GO(getloadavg, iFpi)
 //GO(getlogin, pFv)
 //GOW(getlogin_r, iFpL)
-////GO(__getlogin_r_chk,
-//GO(getmntent, pFp)
+////GO(__getlogin_r_chk, 
+//GO(getmntent, pFS)
 //GO(__getmntent_r, pFpppi)
-//GOW(getmntent_r, pFpppi)
-////GO(getmsg, // Deprecated
-////GO(get_myaddress, vF!)
+//GOW(getmntent_r, pFSppi)
+//#ifdef STATICBUILD
+////GO(getmsg, 
+////GO(get_myaddress, iFp)
+//#else
+////GO(getmsg, 
+//GO(get_myaddress, iFp)
+//#endif
 //GO(getnameinfo, iFpupupui)
-////GO(getnetbyaddr, !Fui)
-////GO(getnetbyaddr_r, iFui!pL!p)
-////GO(getnetbyname, !Fp)
-////GO(getnetbyname_r, iFp!pL!p)
-////GO(getnetent, !Fv)
-////GO(getnetent_r, iF!pL!p)
+//GO(getnetbyaddr, pFui)
+//GO(getnetbyaddr_r, iFuippLpp)
+//GO(getnetbyname, pFp)
+//GO(getnetbyname_r, iFpppLpp)
+//GO(getnetent, pFv)
+//GO(getnetent_r, iFppLpp)
 //GO(getnetgrent, iFppp)
 //GOW(getnetgrent_r, iFppppL)
+//#ifdef STATICBUILD
+////GO(getnetname, iFp)
+//#else
 //GO(getnetname, iFp)
+//#endif
 //GOW(get_nprocs, iFv)
 //GOW(get_nprocs_conf, iFv)
 //GOM(getopt, iFipp)
@@ -575,9 +645,9 @@ GOM(__free, vFp)
 //GOW(getpgid, iFi)
 //GO(getpgrp, iFv)
 //GOW(get_phys_pages, lFv)
-//GO(__getpid, uFv)
+//GO(__getpid, iFv)
 //GO(getpid, iFv)
-////GO(getpmsg, // Deprecated
+////GO(getpmsg, 
 //GOW(getppid, iFv)
 //GOW(getpriority, iFuu)
 //GO(getprotobyname, pFp)
@@ -587,7 +657,11 @@ GOM(__free, vFp)
 //GO(getprotoent, pFv)
 //GO(getprotoent_r, iFppLp)
 //GOW(getpt, iFv)
+//#ifdef STATICBUILD
+////GO(getpublickey, iFpp)
+//#else
 //GO(getpublickey, iFpp)
+//#endif
 //GOW(getpw, iFup)
 //GO(getpwent, pFv)
 //GO(getpwent_r, iFppLp)
@@ -607,25 +681,40 @@ GOM(__free, vFp)
 //GO(getrpcbynumber_r, iFippLp)
 //GO(getrpcent, pFv)
 //GO(getrpcent_r, iFppLp)
-//GO(getrpcport, iFpLLu)
+//#ifdef STATICBUILD
+////GO(getrpcport, 
+//#else
+//GO(getrpcport, iFpiii)
+//#endif
 //GOW(getrusage, iFip)
-////GOW(gets, // Deprecated
-////GO(__gets_chk,
+////GOW(gets, 
+////GO(__gets_chk, 
+//#ifdef STATICBUILD
+////GO(getsecretkey, 
+//#else
 //GO(getsecretkey, iFppp)
+//#endif
 //GO(getservbyname, pFpp)
-////GO(getservbyname_r, iFpp!pL!)
+//GO(getservbyname_r, iFppppLp)
 //GO(getservbyport, pFip)
 //GO(getservbyport_r, iFipppLp)
 //GO(getservent, pFv)
-////GO(getservent_r, iF!pL!)
-////GO(getsgent,
-////GO(getsgent_r,
-////GO(getsgnam,
-////GO(getsgnam_r,
+//GO(getservent_r, iFppLp)
+//#ifdef STATICBUILD
+////GO(getsgent, 
+////GO(getsgent_r, 
+////GO(getsgnam, 
+////GO(getsgnam_r, 
+//#else
+//GO(getsgent, pFv)
+//GO(getsgent_r, iFppLp)
+//GO(getsgnam, pFp)
+//GO(getsgnam_r, iFpppLp)
+//#endif
 //GO(getsid, iFi)
 //GOW(getsockname, iFipp)
 //GOW(getsockopt, iFiiipp)
-////GO(getsourcefilter, iFiupupp!)
+//GO(getsourcefilter, iFiupuppp)
 //GO(getspent, pFv)
 //GO(getspent_r, iFppLp)
 //GO(getspnam, pFp)
@@ -650,59 +739,67 @@ GOM(__free, vFp)
 //GO(getutxent, pFv)
 //GO(getutxid, pFp)
 //GO(getutxline, pFp)
-//GO(getw, iFp)
-//GOW(getwc, uFp)
+//GO(getw, iFS)
+//GOW(getwc, uFS)
 //GO(getwchar, uFv)
 //GO(getwchar_unlocked, uFv)
-//GOW(getwc_unlocked, uFp)
+//GOW(getwc_unlocked, uFS)
 //GO(getwd, pFp)
-////GO(__getwd_chk,
+//#ifdef STATICBUILD
+//// GO(__getwd_chk,
+//#else
+//GO(__getwd_chk, pFpL)
+//#endif
 //GO(getxattr, lFpppL)
-//GOM(glob, iFEpipp)
-//GOM(glob64, iFEpipp)
+//GOM(glob, iFpipp)
+//GOM(glob64, iFpipp)
 //GO(globfree, vFp)
 //GOW(globfree64, vFp)
 //GOW(glob_pattern_p, iFpi)
 //GO(gmtime, pFp)
 //GO(__gmtime_r, pFpp)
 //GOW(gmtime_r, pFpp)
-//GOW(gnu_dev_major, uFL)
-//GOW(gnu_dev_makedev, LFuu)
-//GOW(gnu_dev_minor, uFL)
+//GOW(gnu_dev_major, uFU)
+//GOW(gnu_dev_makedev, UFuu)
+//GOW(gnu_dev_minor, uFU)
 //GOW(gnu_get_libc_release, pFv)
 //GOW(gnu_get_libc_version, pFv)
 //GO(grantpt, iFi)
 //GOW(group_member, iFu)
 //GOW(gsignal, iFi)
-////GO(gtty, // Deprecated
+////GO(gtty, 
 //GOW(hasmntopt, pFpp)
-//GO(hcreate, iFU)
-////GOW(hcreate_r, iFL!)
+//GO(hcreate, iFL)
+//GOW(hcreate_r, iFLp)
 //GOW(hdestroy, vFv)
-////GOW(hdestroy_r, vF!)
-////DATA(h_errlist,
-////DATAB(__h_errno,
+//GOW(hdestroy_r, vFp)
+////DATA(h_errlist, 
+////DATAB(__h_errno, 
 //GO(__h_errno_location, pFv)
 //GO(herror, vFp)
+//#ifdef STATICBUILD
+////GO(host2netname, 
+//#else
 //GO(host2netname, iFppp)
-////GO(hsearch, pF?u)
-////GOW(hsearch_r, iF?up!)
+//#endif
+////GO(hsearch, "pF?u")
+////GOW(hsearch_r, "iF?up!")
 //GO(hstrerror, pFi)
 //GO(htonl, uFu)
 //GO(htons, WFW)
 //GO(iconv, LFppppp)
 //GO(iconv_close, iFp)
 //GO(iconv_open, pFpp)
-////GO(__idna_from_dns_encoding,
-////GO(__idna_to_dns_encoding,
+////GO(__idna_from_dns_encoding, 
+////GO(__idna_to_dns_encoding, 
 //GOW(if_freenameindex, vFp)
 //GOW(if_indextoname, pFup)
 //GOW(if_nameindex, pFv)
 //GOW(if_nametoindex, uFp)
-//GOW(imaxabs, lFl)
-//GOW(imaxdiv, IFII)
-//DATA(in6addr_any, 16)  // type V
-//DATA(in6addr_loopback, 16)  //type V
+//GOW(imaxabs, IFI)
+//GOW(imaxdiv, HFII)
+//DATAV(in6addr_any, 16)
+//DATAV(in6addr_loopback, 16)
 //GO(index, pFpi)
 //GO(inet6_opt_append, iFpuiCuCp)
 //GO(inet6_opt_find, iFpuiCpp)
@@ -717,45 +814,50 @@ GOM(__free, vFp)
 //GO(inet6_option_space, iFi)
 //GO(inet6_opt_next, iFpuippp)
 //GO(inet6_opt_set_val, iFpipu)
-////GO(inet6_rth_add, iFp!)
-////GO(inet6_rth_getaddr, !Fpi)
+//GO(inet6_rth_add, iFpp)
+//GO(inet6_rth_getaddr, pFpi)
 //GO(inet6_rth_init, pFpuii)
 //GO(inet6_rth_reverse, iFpp)
 //GO(inet6_rth_segments, iFp)
 //GO(inet6_rth_space, uFii)
-////GO(__inet6_scopeid_pton,
+////GO(__inet6_scopeid_pton, 
 //GOW(inet_addr, uFp)
 //GOW(inet_aton, iFpp)
-////GO(__inet_aton_exact,
-////GO(inet_lnaof, uF?)
-////GOW(inet_makeaddr, ?Fuu)
-////GO(inet_netof, uF?)
+////GO(__inet_aton_exact, 
+//GO(inet_lnaof, uFu)
+//GOW(inet_makeaddr, UFuu)
+//GO(inet_netof, uFu)
 //GO(inet_network, uFp)
 //GO(inet_nsap_addr, uFppi)
 //GO(inet_nsap_ntoa, pFipp)
-//GO(inet_ntoa, pFu) // Really?
+//GO(inet_ntoa, pFu)
 //GO(inet_ntop, pFippu)
 //GOW(inet_pton, iFipp)
-////GO(__inet_pton_length,
+//GOM(__inet_pton_chk, iFippL)
+////GO(__inet_pton_length, 
 //GO(initgroups, iFpu)
-////GO(init_module, // Deprecated
+//GOM(init_module, iFpLp)
 //GO(initstate, pFupL)
 //GO(initstate_r, iFupLp)
 //GO(innetgr, iFpppp)
 //GO(inotify_add_watch, iFipu)
 //GO(inotify_init, iFv)
-//GO(inotify_init1, iFi)
+//GO(inotify_init1, iFO)
 //GO(inotify_rm_watch, iFii)
 //GO(insque, vFpp)
-////GO(__internal_endnetgrent,
-////GO(__internal_getnetgrent_r,
-////GO(__internal_setnetgrent,
+////GO(__internal_endnetgrent, 
+////GO(__internal_getnetgrent_r, 
+////GO(__internal_setnetgrent, 
 //DATA(_IO_2_1_stderr_, 224)
 //DATA(_IO_2_1_stdin_, 224)
 //DATA(_IO_2_1_stdout_, 224)
-////GO(_IO_adjust_column,
-////GO(_IO_adjust_wcolumn,
+////GO(_IO_adjust_column, 
+////GO(_IO_adjust_wcolumn, 
+//#ifdef PPC64LE
+//GOWM(ioctl, iFiLp)
+//#else
 //GOW(ioctl, iFiLN)
+//#endif
 //GO(_IO_default_doallocate, iFS)
 //GO(_IO_default_finish, vFSi)
 //GO(_IO_default_pbackfail, iFSi)
@@ -764,30 +866,30 @@ GOM(__free, vFp)
 //GO(_IO_default_xsputn, LFSpL)
 //GO(_IO_doallocbuf, vFS)
 //GO(_IO_do_write, iFSpL)
-////GO(_IO_enable_locks,
-////GO(_IO_fclose,
-////GO(_IO_fdopen,
-////GO(_IO_feof,
-////GO(_IO_ferror,
-////GO(_IO_fflush,
-////GO(_IO_fgetpos,
-////GO(_IO_fgetpos64,
-////GO(_IO_fgets,
+////GO(_IO_enable_locks, 
+////GO(_IO_fclose, 
+////GO(_IO_fdopen, 
+////GO(_IO_feof, 
+////GO(_IO_ferror, 
+////GO(_IO_fflush, 
+////GO(_IO_fgetpos, 
+////GO(_IO_fgetpos64, 
+////GO(_IO_fgets, 
 //GO(_IO_file_attach, pFSi)
 //GO(_IO_file_close, iFS)
 //GO(_IO_file_close_it, iFS)
 //GO(_IO_file_doallocate, iFS)
-////GO(_IO_file_finish,
+////GO(_IO_file_finish, 
 //GO(_IO_file_fopen, pFSppi)
 //GO(_IO_file_init, vFS)
-//DATA(_IO_file_jumps, sizeof(void*))
+//DATA(_IO_file_jumps, 8)
 //GO(_IO_file_open, pFSpiiii)
 //GO(_IO_file_overflow, iFSi)
 //GO(_IO_file_read, lFSpl)
 //GO(_IO_file_seek, IFSIi)
 //GO(_IO_file_seekoff, IFSIii)
 //GO(_IO_file_setbuf, pFSpl)
-//GOM(_IO_file_stat, iFESp)
+//GOM(_IO_file_stat, iFSp)
 //GO(_IO_file_sync, iFS)
 //GO(_IO_file_underflow, iFS)
 //GO(_IO_file_write, lFSpl)
@@ -795,223 +897,252 @@ GOM(__free, vFp)
 //GO(_IO_flockfile, vFS)
 //GO(_IO_flush_all, iFv)
 //GO(_IO_flush_all_linebuffered, vFv)
-////GO(_IO_fopen,
-////GOW(_IO_fprintf,
-////GO(_IO_fputs,
-////GO(_IO_fread,
+////GO(_IO_fopen, 
+////GOW(_IO_fprintf, 
+////GO(_IO_fputs, 
+////GO(_IO_fread, 
 //GO(_IO_free_backup_area, vFS)
-////GO(_IO_free_wbackup_area,
-////GO(_IO_fsetpos,
-////GO(_IO_fsetpos64,
-////GO(_IO_ftell,
-////GO(_IO_ftrylockfile,
+////GO(_IO_free_wbackup_area, 
+////GO(_IO_fsetpos, 
+////GO(_IO_fsetpos64, 
+////GO(_IO_ftell, 
+////GO(_IO_ftrylockfile, 
 //GO(_IO_funlockfile, vFS)
-////GO(_IO_fwrite,
+////GO(_IO_fwrite, 
 //GO(_IO_getc, iFS)
-////GO(_IO_getline,
+////GO(_IO_getline, 
 //GO(_IO_getline_info, LFSpLiip)
-////GO(_IO_gets,
+////GO(_IO_gets, 
 //GO(_IO_init, vFSi)
 //GO(_IO_init_marker, vFpS)
-////GO(_IO_init_wmarker,
-////GO(_IO_iter_begin,
-////GO(_IO_iter_end,
-////GO(_IO_iter_file,
-////GO(_IO_iter_next,
-////GO(_IO_least_wmarker,
+////GO(_IO_init_wmarker, 
+////GO(_IO_iter_begin, 
+////GO(_IO_iter_end, 
+////GO(_IO_iter_file, 
+////GO(_IO_iter_next, 
+////GO(_IO_least_wmarker, 
 //GO(_IO_link_in, vFp)
-//DATA(_IO_list_all, sizeof(void*))
-////GO(_IO_list_lock,
-////GO(_IO_list_resetlock,
-////GO(_IO_list_unlock,
-////GO(_IO_marker_delta,
-////GO(_IO_marker_difference,
-////GO(_IO_padn,
-////GO(_IO_peekc_locked,
+//DATA(_IO_list_all, 8)
+////GO(_IO_list_lock, 
+////GO(_IO_list_resetlock, 
+////GO(_IO_list_unlock, 
+////GO(_IO_marker_delta, 
+////GO(_IO_marker_difference, 
+////GO(_IO_padn, 
+////GO(_IO_peekc_locked, 
+//#ifdef STATICBUILD
+////GO(ioperm, 
+//#else
 //GO(ioperm, iFLLi)
-//GOM(iopl, iFEi)     //Not always present
-////GO(_IO_popen,
-////GO(_IO_printf,
-////GO(_IO_proc_close,
-////GO(_IO_proc_open,
+//#endif
+//GOM(iopl, iFi)     //Not always present
+////GO(_IO_popen, 
+////GO(_IO_printf, 
+////GO(_IO_proc_close, 
+////GO(_IO_proc_open, 
 //GO(_IO_putc, iFiS)
-////GO(_IO_puts,
-////GO(_IO_remove_marker,
-////GO(_IO_seekmark,
-////GO(_IO_seekoff,
-////GO(_IO_seekpos,
-////GO(_IO_seekwmark,
-////GO(_IO_setb,
-////GO(_IO_setbuffer,
-////GO(_IO_setvbuf,
-////GO(_IO_sgetn,
-////GO(_IO_sprintf,
-////GO(_IO_sputbackc,
-////GO(_IO_sputbackwc,
-////GO(_IO_sscanf,
-////GO(_IO_str_init_readonly,
-////GO(_IO_str_init_static,
-////GO(_IO_str_overflow,
-////GO(_IO_str_pbackfail,
-////GO(_IO_str_seekoff,
-////GO(_IO_str_underflow,
-////GO(_IO_sungetc,
-////GO(_IO_sungetwc,
-////GO(_IO_switch_to_get_mode,
-////GO(_IO_switch_to_main_wget_area,
-////GO(_IO_switch_to_wbackup_area,
-////GO(_IO_switch_to_wget_mode,
-////GO(_IO_ungetc,
-////GO(_IO_un_link,
-////GO(_IO_unsave_markers,
-////GO(_IO_unsave_wmarkers,
-////GO(_IO_vfprintf,
-////GO(_IO_vfscanf,
-////GO(_IO_vsprintf,
-////GO(_IO_wdefault_doallocate,
-////GO(_IO_wdefault_finish,
-////GO(_IO_wdefault_pbackfail,
-////GO(_IO_wdefault_uflow,
-////GO(_IO_wdefault_xsgetn,
-////GO(_IO_wdefault_xsputn,
-////GO(_IO_wdoallocbuf,
-////GO(_IO_wdo_write,
-////DATA(_IO_wfile_jumps,
-////GO(_IO_wfile_overflow,
-////GO(_IO_wfile_seekoff,
-////GO(_IO_wfile_sync,
-////GO(_IO_wfile_underflow,
-////GO(_IO_wfile_xsputn,
-////GO(_IO_wmarker_delta,
-////GO(_IO_wsetb,
+////GO(_IO_puts, 
+////GO(_IO_remove_marker, 
+////GO(_IO_seekmark, 
+////GO(_IO_seekoff, 
+////GO(_IO_seekpos, 
+////GO(_IO_seekwmark, 
+////GO(_IO_setb, 
+////GO(_IO_setbuffer, 
+////GO(_IO_setvbuf, 
+////GO(_IO_sgetn, 
+////GO(_IO_sprintf, 
+////GO(_IO_sputbackc, 
+////GO(_IO_sputbackwc, 
+////GO(_IO_sscanf, 
+////GO(_IO_str_init_readonly, 
+////GO(_IO_str_init_static, 
+////GO(_IO_str_overflow, 
+////GO(_IO_str_pbackfail, 
+////GO(_IO_str_seekoff, 
+////GO(_IO_str_underflow, 
+////GO(_IO_sungetc, 
+////GO(_IO_sungetwc, 
+////GO(_IO_switch_to_get_mode, 
+////GO(_IO_switch_to_main_wget_area, 
+////GO(_IO_switch_to_wbackup_area, 
+////GO(_IO_switch_to_wget_mode, 
+////GO(_IO_ungetc, 
+////GO(_IO_un_link, 
+////GO(_IO_unsave_markers, 
+////GO(_IO_unsave_wmarkers, 
+////GO(_IO_vfprintf, 
+////GO(_IO_vfscanf, 
+////GO(_IO_vsprintf, 
+////GO(_IO_wdefault_doallocate, 
+////GO(_IO_wdefault_finish, 
+////GO(_IO_wdefault_pbackfail, 
+////GO(_IO_wdefault_uflow, 
+////GO(_IO_wdefault_xsgetn, 
+////GO(_IO_wdefault_xsputn, 
+////GO(_IO_wdoallocbuf, 
+////GO(_IO_wdo_write, 
+////DATA(_IO_wfile_jumps, 
+////GO(_IO_wfile_overflow, 
+////GO(_IO_wfile_seekoff, 
+////GO(_IO_wfile_sync, 
+////GO(_IO_wfile_underflow, 
+////GO(_IO_wfile_xsputn, 
+////GO(_IO_wmarker_delta, 
+////GO(_IO_wsetb, 
 //GO(iruserok, iFuipp)
 //GO(iruserok_af, iFpippW)
 //GO(isalnum, iFi)
-////GO(__isalnum_l,
-////GOW(isalnum_l, iFi!)
+////GO(__isalnum_l, 
+//GOW(isalnum_l, iFip)
 //GO(isalpha, iFi)
-////GO(__isalpha_l,
+////GO(__isalpha_l, 
 //GOW(isalpha_l, iFip)
 //GO(isascii, iFi)
-////GOW(__isascii_l,
-////GO(isastream, // Deprecated
+////GOW(__isascii_l, 
+////GO(isastream, 
 //GOW(isatty, iFi)
 //GO(isblank, iFi)
-////GO(__isblank_l,
-////GOW(isblank_l, iFi!)
+////GO(__isblank_l, 
+//GOW(isblank_l, iFip)
 //GO(iscntrl, iFi)
-////GO(__iscntrl_l,
-////GOW(iscntrl_l, iFi!)
-////GO(__isctype,
+////GO(__iscntrl_l, 
+//GOW(iscntrl_l, iFip)
+////GO(__isctype, 
 //GOW(isctype, iFii)
 //GO(isdigit, iFi)
-////GO(__isdigit_l,
-////GOW(isdigit_l, iFi!)
+////GO(__isdigit_l, 
+//GOW(isdigit_l, iFip)
 //GO(isfdtype, iFii)
 //GO(isgraph, iFi)
-////GO(__isgraph_l,
-////GOW(isgraph_l, iFi!)
+////GO(__isgraph_l, 
+//GOW(isgraph_l, iFip)
 //GO(__isinf, iFd)
 //GOW(isinf, iFd)
 //GO(__isinff, iFf)
 //GOW(isinff, iFf)
-//GO(__isinfl, iFD)
-//GOW(isinfl, iFD)
+//GOD(__isinfl, iFD, __isinf)
+//GOWD(isinfl, iFD, isinf)
 //GO(islower, iFi)
-////GO(__islower_l,
-////GOW(islower_l, iFi!)
+////GO(__islower_l, 
+//GOW(islower_l, iFip)
 //GO(__isnan, iFd)
 //GOW(isnan, iFd)
 //GO(__isnanf, iFf)
 //GOW(isnanf, iFf)
-//GO(__isnanl, iFD)
-//GOW(isnanl, iFD)
-//GO2(__isoc23_fscanf, iFEppV, my___isoc99_fscanf)
-//GO2(__isoc23_sscanf, iFEppV, my___isoc99_sscanf)
+//GOD(__isnanl, iFD, __isnan)
+//GOWD(isnanl, iFD, isnan)
+//GO2(__isoc23_fscanf, iFSpV, my___isoc99_fscanf)
+//GO2(__isoc23_sscanf, iFppV, my___isoc99_sscanf)
 //GO2(__isoc23_strtol, lFppi, strtol)
+//GO2(__isoc23_strtoll, IFppi, strtoll)
 //GO2(__isoc23_strtoul, LFppi, strtoul)
-//GOM(__isoc99_fscanf, iFEppV)
+//GO2(__isoc23_strtoull, UFppi, strtoull)
+//GO2(__isoc23_wcstol, lFppi, wcstol)
+//GOM(__isoc99_fscanf, iFppV)
+//GOM(__isoc23_swscanf, iFppV)
+//GO2(__isoc23_vfscanf, iFppA, my___isoc99_vfscanf)
 ////GO(__isoc99_fwscanf, iFppV)
-//GOM(__isoc99_scanf, iFEpV)
-//GOM(__isoc99_sscanf, iFEppV)
-//GOM(__isoc99_swscanf, iFEppV)
-//GOM(__isoc99_vfscanf, iFEppA)
+//GOM(__isoc99_scanf, iFpV)
+//GOM(__isoc99_sscanf, iFppV)
+//GOM(__isoc99_swscanf, iFppV)
+//GOM(__isoc99_vfscanf, iFppA)
 ////GO(__isoc99_vfwscanf, iFppA)
-////GO(__isoc99_vscanf, iFpA)
-//GOM(__isoc99_vsscanf, iFEppA)
-//GOM(__isoc99_vswscanf, iFEppA)
+//GOM(__isoc99_vscanf, iFpA)
+//GOM(__isoc99_vsscanf, iFppA)
+//GOM(__isoc99_vswscanf, iFppA)
 ////GO(__isoc99_vwscanf, iFpA)
 ////GO(__isoc99_wscanf, iFpV)
 //GO(isprint, iFi)
-////GO(__isprint_l,
-////GOW(isprint_l, iFi!)
+////GO(__isprint_l, 
+//GOW(isprint_l, iFip)
 //GO(ispunct, iFi)
-////GO(__ispunct_l,
-////GOW(ispunct_l, iFi!)
+////GO(__ispunct_l, 
+//GOW(ispunct_l, iFip)
 //GO(isspace, iFi)
-////GO(__isspace_l,
-////GOW(isspace_l, iFi!)
+////GO(__isspace_l, 
+//GOW(isspace_l, iFip)
 //GO(isupper, iFi)
-////GO(__isupper_l,
-////GOW(isupper_l, iFi!)
+////GO(__isupper_l, 
+//GOW(isupper_l, iFip)
 //GOW(iswalnum, iFu)
-////GO(__iswalnum_l,
+////GO(__iswalnum_l, 
 //GOW(iswalnum_l, iFup)
 //GOW(iswalpha, iFu)
-////GO(__iswalpha_l,
+////GO(__iswalpha_l, 
 //GOW(iswalpha_l, iFup)
 //GOW(iswblank, iFu)
-////GO(__iswblank_l,
+////GO(__iswblank_l, 
 //GOW(iswblank_l, iFup)
 //GOW(iswcntrl, iFu)
-////GO(__iswcntrl_l,
+////GO(__iswcntrl_l, 
 //GOW(iswcntrl_l, iFup)
-////GO(__iswctype,
+////GO(__iswctype, 
 //GOW(iswctype, iFuL)
 //GO(__iswctype_l, iFuLL)
 //GOW(iswctype_l, iFuLp)
 //GOW(iswdigit, iFu)
-////GO(__iswdigit_l,
+////GO(__iswdigit_l, 
 //GOW(iswdigit_l, iFup)
 //GOW(iswgraph, iFu)
-////GO(__iswgraph_l,
+////GO(__iswgraph_l, 
 //GOW(iswgraph_l, iFup)
 //GOW(iswlower, iFu)
-////GO(__iswlower_l,
+////GO(__iswlower_l, 
 //GOW(iswlower_l, iFup)
 //GOW(iswprint, iFu)
-////GO(__iswprint_l,
+////GO(__iswprint_l, 
 //GOW(iswprint_l, iFup)
 //GOW(iswpunct, iFu)
-////GO(__iswpunct_l,
+////GO(__iswpunct_l, 
 //GOW(iswpunct_l, iFup)
 //GOW(iswspace, iFu)
-////GO(__iswspace_l,
+////GO(__iswspace_l, 
 //GOW(iswspace_l, iFup)
 //GOW(iswupper, iFu)
-////GO(__iswupper_l,
+////GO(__iswupper_l, 
 //GOW(iswupper_l, iFup)
 //GOW(iswxdigit, iFu)
-////GO(__iswxdigit_l,
+////GO(__iswxdigit_l, 
 //GOW(iswxdigit_l, iFup)
 //GO(isxdigit, iFi)
-////GO(__isxdigit_l,
+////GO(__isxdigit_l, 
 //GOW(isxdigit_l, iFip)
-////GO(__ivaliduser,
+////GO(__ivaliduser, 
 //GO(jrand48, lFp)
 //GOW(jrand48_r, iFppp)
-////GO(key_decryptsession, iFp!)
-////GO(key_decryptsession_pk, iFp!!)
-////DATAB(__key_decryptsession_pk_LOCAL,
-////GO(key_encryptsession, iFp!)
-////GO(key_encryptsession_pk, iFp!!)
-////DATAB(__key_encryptsession_pk_LOCAL,
-////GO(key_gendes, iF!)
-////DATAB(__key_gendes_LOCAL,
-////GO(key_get_conv, iFp!)
+//#ifdef STATICBUILD
+////GO(key_decryptsession, iFpp)
+////GO(key_decryptsession_pk, "iFp!!")
+//#else
+//GO(key_decryptsession, iFpp)
+////GO(key_decryptsession_pk, "iFp!!")
+//#endif
+////DATAB(__key_decryptsession_pk_LOCAL, 
+//#ifdef STATICBUILD
+////GO(key_encryptsession, iFpp)
+////GO(key_encryptsession_pk, "iFp!!")
+//#else
+//GO(key_encryptsession, iFpp)
+////GO(key_encryptsession_pk, "iFp!!")
+//#endif
+////DATAB(__key_encryptsession_pk_LOCAL, 
+//#ifdef STATICBUILD
+////GO(key_gendes, iFp)
+//#else
+//GO(key_gendes, iFp)
+//#endif
+////DATAB(__key_gendes_LOCAL, 
+////GO(key_get_conv, "iFp!")
+//#ifdef STATICBUILD
+////GO(key_secretkey_is_set, 
+////GO(key_setnet, 
+////GO(key_setsecret, 
+//#else
 //GO(key_secretkey_is_set, iFv)
-////GO(key_setnet,
+////GO(key_setnet, 
 //GO(key_setsecret, iFp)
+//#endif
 //GOW(kill, iFii)
 //GO(killpg, iFii)
 //GO(klogctl, iFipi)
@@ -1022,75 +1153,70 @@ GOM(__free, vFp)
 //GOW(lckpwdf, iFv)
 //GO(lcong48, vFp)
 //GOW(lcong48_r, iFpp)
-//GOW(ldexp, dFdi)
-//GOW(ldexpf, fFfi)
-//GOW(ldexpl, DFDi)
 //GO(ldiv, HFll)
-//GOM(lfind, pFEpppLp)
+//GOM(lfind, pFpppLp)
 //GO(lgetxattr, lFpppL)
-////GO(__libc_alloca_cutoff,
-#if 0
-//GO(__libc_allocate_once_slow, pFpppp)
-////GO(__libc_allocate_rtsig,
-////GO(__libc_allocate_rtsig_private,
-//GO(__libc_alloc_buffer_alloc_array, pFpUUU)
-//GO(__libc_alloc_buffer_allocate, pFIp)
-//GO(__libc_alloc_buffer_copy_bytes, pFppI)
-//GO(__libc_alloc_buffer_copy_string, pFp)
-//GO(__libc_alloc_buffer_create_failure, vFp)
-#endif
+////GO(__libc_alloca_cutoff, 
+////GO(__libc_allocate_once_slow, 
+////GO(__libc_allocate_rtsig, 
+////GO(__libc_allocate_rtsig_private, 
+////GO(__libc_alloc_buffer_alloc_array, 
+////GO(__libc_alloc_buffer_allocate, 
+////GO(__libc_alloc_buffer_copy_bytes, 
+////GO(__libc_alloc_buffer_copy_string, 
+////GO(__libc_alloc_buffer_create_failure, 
 //GO(__libc_calloc, pFLL)
-//GO(__calloc, pFLL)
-////GO(__libc_clntudp_bufcreate,
+////GO(__libc_clntudp_bufcreate, 
 //GO(__libc_current_sigrtmax, iFv)
-////GO(__libc_current_sigrtmax_private,
+////GO(__libc_current_sigrtmax_private, 
 //GO(__libc_current_sigrtmin, iFv)
-////GO(__libc_current_sigrtmin_private,
-////GO(__libc_dlclose,
-////GO(__libc_dlopen_mode,
-////GO(__libc_dlsym,
-////GO(__libc_dlvsym,
-//GO(__libc_dynarray_at_failure, vFUU)
-//GO(__libc_dynarray_emplace_enlarge, iFppU)
-//GO(__libc_dynarray_finalize, iFppUp)
-//GO(__libc_dynarray_resize, iFpUpU)
-//GO(__libc_dynarray_resize_clear, iFpUpU)
-////GO(__libc_fatal,
-////GO(__libc_fcntl64,
-////GO(__libc_fork,
-GOM(__libc_free, vFp)
-//GO(__libc_freeres, vFv)
-////GO(__libc_ifunc_impl_list,
-////GO(__libc_init_first,
-////GO(__libc_longjmp,
-//GO(__libc_mallinfo, pFv)
+////GO(__libc_current_sigrtmin_private, 
+//GOM(__libc_dlclose, iFp)
+//GOM(__libc_dlopen_mode, pFpi)
+//GOM(__libc_dlsym, pFpp)
+////GO(__libc_dlvsym, 
+////GO(__libc_dynarray_at_failure, 
+////GO(__libc_dynarray_emplace_enlarge, 
+////GO(__libc_dynarray_finalize, 
+////GO(__libc_dynarray_resize, 
+////GO(__libc_dynarray_resize_clear, 
+////GO(__libc_fatal, 
+////GO(__libc_fcntl64, 
+////GO(__libc_fork, 
+//GO(__libc_free, vFp)
+////GO(__libc_freeres, 
+////GO(__libc_ifunc_impl_list, 
+////GO(__libc_init_first, 
+////GO(__libc_longjmp, 
+////GO(__libc_mallinfo, 
 //GO(__libc_malloc, pFL)
-//GO(__libc_mallopt, iFii)
+////GO(__libc_mallopt, 
 //GO(__libc_memalign, pFLL)
-////GO(__libc_msgrcv,
-////GO(__libc_msgsnd,
-////GO(__libc_pread,
-////GO(__libc_pthread_init,
+////GO(__libc_msgrcv, 
+////GO(__libc_msgsnd, 
+////GO(__libc_pread, 
+////GO(__libc_pthread_init, 
 //GO(__libc_pvalloc, pFL)
-////GO(__libc_pwrite,
-////GO(__libc_readline_unlocked,
+////GO(__libc_pwrite, 
+////GO(__libc_readline_unlocked, 
 //GO(__libc_realloc, pFpL)
-//GO(__libc_reallocarray, pFpUU)
-////GO(__libc_rpc_getport,
-////GO(__libc_sa_len,
-#if 0
-//GO(__libc_scratch_buffer_grow, iFp)
-//GO(__libc_scratch_buffer_grow_preserve, iFp)
-//GO(__libc_scratch_buffer_set_array_size, iFpUU)
-#endif
-////GOW(__libc_secure_getenv,
-////GO(__libc_siglongjmp,
-//GOM(__libc_start_main, iFEpippppp)
-////GO(__libc_system,
-//GO(__libc_thread_freeres, vFv)
+////GO(__libc_reallocarray, 
+////GO(__libc_rpc_getport, 
+////GO(__libc_sa_len, 
+////GO(__libc_scratch_buffer_grow, 
+////GO(__libc_scratch_buffer_grow_preserve, 
+////GO(__libc_scratch_buffer_set_array_size, 
+////GOW(__libc_secure_getenv, 
+////GO(__libc_siglongjmp, 
+//GOM(__libc_start_main, iFpippppp)
+//#ifdef STATICBUILD
+//// GO(__libc_system, iFp)
+//#else
+//GO(__libc_system, iFp)
+//#endif
+////GO(__libc_thread_freeres, 
 //GO(__libc_valloc, pFL)
-//GO(__valloc, pFL)
-////GO(__libc_vfork,
+////GO(__libc_vfork, 
 //GOW(link, iFpp)
 //GO(linkat, iFipipi)
 //GOW(listen, iFii)
@@ -1098,56 +1224,51 @@ GOM(__libc_free, vFp)
 //GO(llabs, IFI)
 //GO(lldiv, HFII)
 //GO(llistxattr, lFppL)
-////GO(llseek, // Deprecated
-////DATAB(loc1,
-////DATAB(loc2,
+////GO(llseek, 
+////DATAB(loc1, 
+////DATAB(loc2, 
 //GO(localeconv, pFv)
 //GO(localtime, pFp)
 //GO2(localtime64, pFp, localtime)
 //GOW(localtime_r, pFpp)
-//GO2(localtime64_r, pFpp, localtime_r)   //Weak
-//GO(lockf, iFiiI)
-//GO(lockf64, iFiil)
-////DATAB(locs,
-//GOWM(_longjmp, vFEpi)
-//GOWM(longjmp, vFEpi)
-//GOM(__longjmp_chk, vFEpi)
+//GOW2(localtime64_r, pFpp, localtime_r)
+//GO(lockf, iFiil)
+//GO(lockf64, iFiiI)
+////DATAB(locs, 
+//GOWM(_longjmp, vFpi)
+//GOWM(longjmp, vFpi)
+//GOM(__longjmp_chk, vFpi)
 //GO(lrand48, lFv)
 //GO(lrand48_r, iFpp)
 //GO(lremovexattr, iFpp)
-//GOM(lsearch, pFEpppLp)
+//GOM(lsearch, pFpppLp)
 //GO(__lseek, IFiIi)
-//GO(lseek, IFiIi)
-//GO(lseek64, lFili)
+//GO(lseek, lFili)
+//GO(lseek64, IFiIi)
 //GO(lsetxattr, iFpppLi)
-//GOM(lstat, iFEpp)
-//GOM(lstat64, iFEpp)
+//GOM(lstat, iFpp)
+//GOM(lstat64, iFpp)
 //GO(lutimes, iFpp)
-//GOM(__lxstat, iFEipp)
-//GOM(__lxstat64, iFEipp)
+//GOM(__lxstat, iFipp)
+//GOM(__lxstat64, iFipp)
 //GO(__madvise, iFpLi)
 //GOW(madvise, iFpLi)
-//GOWM(makecontext, iFEppiV)
-//GOWM(mallinfo, pFEp)
-//GO(__mallinfo, pFEp)
+//GOWM(makecontext, vFppiV)
+//GOWM(mallinfo, pFp)
+//GOWM(mallinfo2, pFp)
 //GO(malloc, pFL)
-//GO(__malloc, pFL)
-////GO(malloc_get_state, // Obsolete
-//GOW(malloc_info, iFip)
-//GOW(__malloc_info, iFip)
-////GO(malloc_set_state, // Obsolete
+////GO(malloc_get_state, 
+//GOW(malloc_info, iFiS)
+////GO(malloc_set_state, 
 //GOW(malloc_stats, vFv)
-//GOW(__malloc_stats, vFv)
 //GO(malloc_trim, iFL)
-//GO(__malloc_trim, iFL)
 //GO(malloc_usable_size, LFp)
 //GOW(mallopt, iFii)
-//GOW(__mallopt, iFii)
-////DATAB(mallwatch,
-//GO(mblen, iFpU)
+////DATAB(mallwatch, 
+//GO(mblen, iFpL)
 //GO(__mbrlen, LFpLp)
 //GO(mbrlen, LFpLp)
-////GO(mbrtoc16, LFppL!)
+//GO(mbrtoc16, LFppLp)
 //GOW(mbrtoc32, LFppLp)
 //GO(__mbrtowc, LFppLp)
 //GO(mbrtowc, LFppLp)
@@ -1157,26 +1278,25 @@ GOM(__libc_free, vFp)
 //GO(mbsrtowcs, LFppLp)
 //GO(__mbsrtowcs_chk, LFppLpL)
 //GO(mbstowcs, LFppL)
-////GO(__mbstowcs_chk,
+//GO(__mbstowcs_chk, LFppLL)
 //GO(mbtowc, iFppL)
-//GO(mcheck, iFp)
+////GOM(mcheck, iFp)
 //GO(mcheck_check_all, vFv)
-////GO(mcheck_pedantic, iF@)
-////GO(_mcleanup,
+////GOM(mcheck_pedantic, iFp)
+//GO(_mcleanup, vFv)
 //GO(_mcount, vFpp)
 //GO2(mcount, vFpp, _mcount)
 //GO(memalign, pFLL)
-//GO(__memalign, pFLL)
 //GO(memccpy, pFppiL)
 //GO(memchr, pFpiL)
 //GO(memcmp, iFppL)
 //GO(__memcmpeq, iFppL)
 //GO(memcpy, pFppL)
-//GO(__memcpy_chk, pFppuL)
+//GO(__memcpy_chk, pFppLL)
 //GO(memfd_create, iFpu)
 //GO(memfrob, pFpL)
 //GO(memmem, pFpLpL)
-//GO(memmove, pFppU)
+//GO(memmove, pFppL)
 //GO(__memmove_chk, pFppLL)
 //GO(__mempcpy, pFppL)
 //GO(mempcpy, pFppL)
@@ -1184,16 +1304,16 @@ GOM(__libc_free, vFp)
 //GO(memrchr, pFpiL)
 //GO(memset, pFpiL)
 //GO(__memset_chk, pFpiLL)
-////GO(__mempcpy_small,
-////GO(__merge_grp,
+////GO(__mempcpy_small, 
+////GO(__merge_grp, 
 //GO(mincore, iFpLp)
 //GOW(mkdir, iFpu)
 //GO(mkdirat, iFipu)
 //GO(mkdtemp, pFp)
 //GO(mkfifo, iFpu)
 //GO(mkfifoat, iFipu)
-//GO(mknod, iFpuL)
-//GO(mknodat, iFipuL)
+//GO(mknod, iFpuU)
+//GO(mknodat, iFipuU)
 //GO(mkostemp, iFpi)
 //GOW(mkostemp64, iFpi)
 //GO(mkostemps, iFpii)
@@ -1208,24 +1328,40 @@ GOM(__libc_free, vFp)
 //GO(mlock, iFpL)
 //GO(mlock2, iFpLu)
 //GO(mlockall, iFi)
-////GO(__mmap,
-//GOWM(mmap, pFEpLiiil)
-//GOWM(mmap64, pFEpLiiil)
-//GOW(modf, dFdp)
-//GOW(modff, fFfp)
-//GOW(modfl, DFDp)
-////GOW(modify_ldt, // Deprecated
+////GO(__mmap, 
+//GOWM(mmap, pFpLiiil)
+//GOWM(mmap64, pFpLiiiI)
+////GOW(modify_ldt, 
 ////GOW(moncontrol,
-////GO(__monstartup,
-////GOW(monstartup,
-////DATA(__morecore, // Compat-only
+//GO(__monstartup, vFLL)
+//#ifdef STATICBUILD
+////GOW(monstartup, vFLL)
+//#else
+//GOW(monstartup, vFLL)
+//#endif
+////DATA(__morecore, 
 //GOW(mount, iFpppLp)
+//#ifdef STATICBUILD
+//GOM(mount_setattr, iFipupL)
+//GOM(move_mount, iFipipu)
+//GOM(fsopen, iFpu)
+//GOM(fsconfig, iFiuppi)
+//GOM(fsmount, iFiuu)
+//GOM(fspick, iFipu)
+//#else
+//GO(mount_setattr, iFipupL)
+//GO(move_mount, iFipipu)
+//GO(fsopen, iFpu)
+//GO(fsconfig, iFiuppi)
+//GO(fsmount, iFiuu)
+//GO(fspick, iFipu)
+//#endif
 //GO(mprobe, iFp)
-////GO(__mprotect,
-//GOWM(mprotect, iFEpLi)
-//GO(mrand48, IFv)
+////GO(__mprotect, 
+//GOWM(mprotect, iFpLi)
+//GO(mrand48, lFv)
 //GO(mrand48_r, iFpp)
-//GOM(mremap, pFEpLLiN) //weal
+//GOWM(mremap, pFpLLiN)
 //GO(msgctl, iFiip)
 //GO(msgget, iFii)
 //GOW(msgrcv, lFipLli)
@@ -1234,130 +1370,151 @@ GOM(__libc_free, vFp)
 //GO(mtrace, vFv)
 //GO(munlock, iFpL)
 //GO(munlockall, iFv)
-////GO(__munmap,
-//GOWM(munmap, iFEpL)
+////GO(__munmap, 
+//GOWM(munmap, iFpL)
 //GO(muntrace, vFv)
 //GO(name_to_handle_at, iFipppi)
 //GO(__nanosleep, iFpp)
 //GOW(nanosleep, iFpp)
-////GO(__nanosleep_nocancel,
-////GO(__netlink_assert_response,
+////GO(__nanosleep_nocancel, 
+////GO(__netlink_assert_response, 
+//#ifdef STATICBUILD
+////GO(netname2host, iFppi)
+////GO(netname2user, iFppppp)
+//#else
 //GO(netname2host, iFppi)
 //GO(netname2user, iFppppp)
+//#endif
 //GO(__newlocale, pFipp)
 //GOW(newlocale, pFipp)
-////GO(nfsservctl, // Deprecated
-////GO(nftw, iFp@ii)
-//GOM(nftw64, iFEppii)
+////GO(nfsservctl, 
+//GOM(nftw, iFppii)
+//GOM(nftw64, iFppii)
 //GOW(ngettext, pFppL)
 //GO(nice, iFi)
-////DATAB(_nl_domain_bindings,
+////DATAB(_nl_domain_bindings, 
 //GO(nl_langinfo, pFi)
-//GO(__nl_langinfo_l, pFup)
+//GO(__nl_langinfo_l, pFip)
 //GOW(nl_langinfo_l, pFip)
-////DATAB(_nl_msg_cat_cntr,
+//DATAB(_nl_msg_cat_cntr, 4)
 //GO(nrand48, lFp)
 //GOW(nrand48_r, iFppp)
-////GO(__nss_configure_lookup,
-////GO(__nss_database_lookup,
-////GO(__nss_disable_nscd,
-////GO(_nss_files_parse_grent,
-////GO(_nss_files_parse_pwent,
-////GO(_nss_files_parse_sgent,
-////GO(_nss_files_parse_spent,
-////GO(__nss_group_lookup,
-////GO(__nss_group_lookup2,
-////GO(__nss_hash,
-////GO(__nss_hostname_digits_dots,
-////GO(__nss_hosts_lookup,
-////GO(__nss_hosts_lookup2,
-////GO(__nss_lookup,
-////GO(__nss_lookup_function,
-////GO(__nss_next,
-////GO(__nss_next2,
-////GO(__nss_passwd_lookup,
-////GO(__nss_passwd_lookup2,
-////GO(__nss_services_lookup2,
+////GO(__nss_configure_lookup, 
+////GO(__nss_database_lookup, 
+////GO(__nss_disable_nscd, 
+////GO(_nss_files_parse_grent, 
+////GO(_nss_files_parse_pwent, 
+////GO(_nss_files_parse_sgent, 
+////GO(_nss_files_parse_spent, 
+////GO(__nss_group_lookup, 
+////GO(__nss_group_lookup2, 
+////GO(__nss_hash, 
+////GO(__nss_hostname_digits_dots, 
+////GO(__nss_hosts_lookup, 
+////GO(__nss_hosts_lookup2, 
+////GO(__nss_lookup, 
+////GO(__nss_lookup_function, 
+////GO(__nss_next, 
+////GO(__nss_next2, 
+////GO(__nss_passwd_lookup, 
+////GO(__nss_passwd_lookup2, 
+////GO(__nss_services_lookup2, 
 //GOW(ntohl, uFu)
 //GOW(ntohs, WFW)
 //GOW(ntp_adjtime, iFp)
-////GO(ntp_gettime, iF!)
-////GO(ntp_gettimex, iF!)
-////DATAB(_null_auth,
-////DATAB(_obstack,
-////GO(_obstack_allocated_p,
-////DATA(obstack_alloc_failed_handler,
-//GOM(_obstack_begin, iFpLLpp)
-////GO(_obstack_begin_1,
-////DATA(obstack_exit_failure,
+////GO(ntp_gettime, "iF!")
+//GO(ntp_gettimex, iFp)
+////DATAB(_null_auth, 24)
+////DATAB(_obstack, 
+////GO(_obstack_allocated_p, 
+////DATAM(obstack_alloc_failed_handler, 8)
+//GOM(_obstack_begin, iFpiipp)
+////GOM(_obstack_begin_1, iFpiippp)
+////DATA(obstack_exit_failure, 4)
 //GOM(_obstack_free, vFpp)
 //GOM(obstack_free, vFpp)
-////GO(_obstack_memory_used,
-//GOM(_obstack_newchunk, vFEpi)
-////GOW(obstack_printf, iFppV)
-////GO(__obstack_printf_chk,
-//GOWM(obstack_vprintf, iFEppA)
-////GO(__obstack_vprintf_chk,
-////GOW(on_exit, iF@p)
-//GOWM(__open, iFEpOu)
-//GOWM(open, iFEpOu)
+////GOM(_obstack_memory_used, iFp)
+//GOM(_obstack_newchunk, vFpi)
+////GOWM(obstack_printf, iFppV)
+////GO(__obstack_printf_chk, 
+//GOWM(obstack_vprintf, iFppA)
+////GO(__obstack_vprintf_chk, 
+////GOWM(on_exit, iFpp)
+//GOWM(__open, iFpON)
+//GOWM(open, iFpON)
 //GO(__open_2, iFpO)
-////GOW(__open64,
-//GOWM(open64, iFEpOu)
+////GOW(__open64, 
+//GOWM(open64, iFpON)
 //GO(__open64_2, iFpO)
-////GO(__open64_nocancel,
+////GO(__open64_nocancel, 
 //GOW(openat, iFipON)
 //GO(__openat_2, iFipO)
 //GOW(openat64, iFipON)
 //GO(__openat64_2, iFipO)
 //GO(open_by_handle_at, iFipi)
-////GO(__open_catalog,
+//GOW(open_tree, iFipu)
+////GO(__open_catalog, 
 //GOW(opendir, pFp)
 //GO(openlog, vFpii)
-//GOW(open_memstream, pFpp)
-////GO(__open_nocancel,
-//GO(open_wmemstream, pFpp)
-//DATA(optarg, sizeof(void*))
-//DATA(opterr, sizeof(int))
-//DATA(optind, sizeof(int))
-//DATA(optopt, sizeof(int))
-//GO(__overflow, iFpi)
+//GOW(open_memstream, SFpp)
+////GO(__open_nocancel, 
+//GO(open_wmemstream, SFpp)
+//DATA(optarg, 8)
+//DATA(opterr, 4)
+//DATA(optind, 4)
+//DATA(optopt, 4)
+//GO(__overflow, iFSi)
 //GO(parse_printf_format, LFpLp)
-////GO(passwd2des, // Deprecated
+//#ifdef STATICBUILD
+////GO(passwd2des, 
+//#else
+//GO(passwd2des, vFpp)
+//#endif
 //GO(pathconf, lFpi)
 //GOW(pause, iFv)
-////GO(__pause_nocancel,
-//GO(pclose, iFp)
+////GO(__pause_nocancel, 
+//GO(pclose, iFS)
 //GO(perror, vFp)
 //GOW(personality, iFL)
+//GOM(pidfd_open, iFiu)
+//GOM(pidfd_send_signal, iFiipu)
+//GOM(pidfd_getfd, iFiiu)
 //GO(__pipe, iFp)
 //GOW(pipe, iFp)
-//GO(pipe2, iFpi)
-////GO(pivot_root, // Deprecated
+//GO(pipe2, iFpO)
+////GO(pivot_root, 
 //GO(pkey_alloc, iFuu)
 //GO(pkey_free, iFi)
 //GO(pkey_get, iFi)
 //GO(pkey_mprotect, iFpLii)
 //GO(pkey_set, iFiu)
-////GO(pmap_getmaps, pF!)
-////GO(pmap_getport, WF!LLu)
-////GO(pmap_rmtcall, uF!LLL@p@p?p)
-//GO(pmap_set, iFLLiW)
+//#ifdef STATICBUILD
+////GO(pmap_getmaps, pFp)
+////GO(pmap_getport, WFpLLu)
+////GO(pmap_rmtcall, "uF!LLL@p@p?p")
+////GO(pmap_set, iFLLii)
+////GO(pmap_unset, iFLL)
+//#else
+//GO(pmap_getmaps, pFp)
+//GO(pmap_getport, WFpLLu)
+////GO(pmap_rmtcall, "uF!LLL@p@p?p")
+//GO(pmap_set, iFLLii)
 //GO(pmap_unset, iFLL)
+//#endif
 //GO(__poll, iFpLi)
 //GO(poll, iFpLi)
 //GO(__poll_chk, iFpuiL)
-//GO(popen, pFpp)
+//GO(popen, SFpp)
 //GO(posix_fadvise, iFilli)
-//GO(posix_fadvise64, iFilli)
+//GO(posix_fadvise64, iFiIIi)
 //GO(posix_fallocate, iFill)
-//GO(posix_fallocate64, iFill)
-////GO(__posix_getopt,
+//GO(posix_fallocate64, iFiII)
+////GO(__posix_getopt, 
 //GO(posix_madvise, iFpLi)
 //GO(posix_memalign, iFpLL)
-//GO(__posix_memalign, iFpLL)
 //GOW(posix_openpt, iFi)
-//GOM(posix_spawn, iFEpppppp)
+//GOM(posix_spawn, iFpppppp)
+//GO(posix_spawn_file_actions_addclosefrom_np, iFpi)
 //GOW(posix_spawnattr_destroy, iFp)
 //GO(posix_spawnattr_getflags, iFpp)
 //GO(posix_spawnattr_getpgroup, iFpp)
@@ -1379,201 +1536,90 @@ GOM(__libc_free, vFp)
 //GOW(posix_spawn_file_actions_addopen, iFpipiu)
 //GOW(posix_spawn_file_actions_destroy, iFp)
 //GOW(posix_spawn_file_actions_init, iFp)
-//GOM(posix_spawnp, iFEpppppp)
+//GOM(posix_spawnp, iFpppppp)
 //GO(ppoll, iFpLpp)
 //GO(__ppoll_chk, iFpuppL)
-//GOWM(prctl, iFEiLLLL)
-//GO(pread, IFipUI)
+//GOWM(prctl, iFiLLLL)
+//GO(pread, lFipLl)
 //GOW(__pread64, lFipLI)
-//GO(pread64, lFipLl)
-////GO(__pread64_chk,
+//GO(pread64, lFipLI)
+//#ifdef LA64
+//GO2(__pread64_chk, lFipLlL, __pread_chk)
+//#else
+//GO(__pread64_chk, lFipLlL)
+//#endif
 //GO(__pread_chk, lFipLlL)
 //GO(preadv, lFipil)
 //GO(preadv2, lFipili)
-//GO(preadv64, lFipil)
-//GO(preadv64v2, lFipili)
-//GOM(printf, iFEpV)
-//GOM(__printf_chk, iFEipV)
-////GO(__printf_fp,
-////GO(printf_size,
-////GO(printf_size_info,
+//GO(preadv64, lFipiI)
+//GO(preadv64v2, lFipiIi)
+//GOM(printf, iFpV)
+//GOM(__printf_chk, iFipV)
+////GO(__printf_fp, 
+//GO(printf_size, iFSpp)
+//GO(printf_size_info, iFpLp)
 //GO(prlimit, iFiupp)
 //GOW(prlimit64, iFiupp)
 //GO(process_vm_readv, lFipLpLL)
-//GO(process_vm_writev, lFipLpLL)
+//GOM(process_vm_writev, lFipLpLL)
 //GO(profil, iFpLLu)
-////GO(__profile_frequency,
-//DATA(__progname, sizeof(void*))
-//DATA(__progname_full, sizeof(void))
+////GO(__profile_frequency, 
+//DATA(__progname, 8)
+//DATA(__progname_full, 1)
 //GOW(pselect, iFippppp)
 //GO(psiginfo, vFpp)
 //GO(psignal, vFip)
+//#ifdef STATICBUILD
+////GO(__sF, vFip)
+////GO(__assert2, vFip)
+//#else
 //GO(__sF, vFip)
 //GO(__assert2, vFip)
+//#endif
 //
-//GOM(pthread_atfork, iFEppp)
-//GOM(pthread_attr_destroy, iFEp)
-//GOM(pthread_attr_getdetachstate, iFEpp)
-//GOM(pthread_attr_getguardsize, iFEpp)
-//GOM(pthread_attr_getinheritsched, iFEpp)
-//GOM(pthread_attr_getschedparam, iFEpp)
-//GOM(pthread_attr_getschedpolicy, iFEpp)
-//GOM(pthread_attr_getscope, iFEpp)
-//GOM(pthread_attr_getstack, iFEppp)
-//GOM(pthread_attr_getstackaddr, iFEpp)
-//GOM(pthread_attr_getstacksize, iFEpp)
-//GOM(pthread_attr_init, iFEp)
-//GOM(pthread_attr_setaffinity_np, iFEpLp)
-//GOM(pthread_attr_setdetachstate, iFEpi)
-//GOM(pthread_attr_setguardsize, iFEpL)
-//GOM(pthread_attr_setinheritsched, iFEpi)
-//GOM(pthread_attr_setschedparam, iFEpp)
-//GOM(pthread_attr_setschedpolicy, iFEpi)
-//GOM(pthread_attr_setscope, iFEpi)
-//GOM(pthread_attr_setstackaddr, iFEpp)
-//GOM(pthread_attr_setstack, iFEppL)
-//GOM(pthread_attr_setstacksize, iFEpL)
-//GOM(pthread_barrierattr_destroy, iFEp)
-//GOM(pthread_barrierattr_getpshared, iFEpp)
-//GOM(pthread_barrierattr_init, iFEp)
-//GOM(pthread_barrierattr_setpshared, iFEpi)
-//GO(pthread_barrier_destroy, iFp)
-//GOM(pthread_barrier_init, iFEppu)
-//GO(pthread_barrier_wait, iFp)
-//GO(pthread_cancel, iFL)
-//GOM(pthread_condattr_destroy, iFEp)
-//GOM(pthread_condattr_getclock, iFEpp)
-//GOM(pthread_condattr_getpshared, iFEpp)
-//GOM(pthread_condattr_init, iFEp)
-//GOM(pthread_condattr_setclock, iFEpi)
-//GOM(pthread_condattr_setpshared, iFEpi)
-//GOM(pthread_cond_broadcast, iFEp)
-//GOM(pthread_cond_destroy, iFEp)
-//GOM(pthread_cond_init, iFEpp)
-//GO(pthread_cond_signal, iFp)
-//GOM(pthread_cond_timedwait, iFEppp)
-//GOM(pthread_cond_wait, iFEpp)
-//GOM(pthread_create, iFEpppp)
-//GOM(pthread_cond_clockwait, iFEppip)
-//GO(pthread_detach, iFL)
-//GO(pthread_equal, iFLL)
-//GO(pthread_exit, vFp)
-//GOM(pthread_getaffinity_np, iFEpLp)
-//GOM(pthread_getattr_np, iFELp)
-//GOM(pthread_getattr_default_np, iFEp)
-//GOM(pthread_setattr_default_np, iFEp)
-//GO(pthread_getcpuclockid, iFLp)
-//GO(pthread_getschedparam, iFLpp)
-//GO(pthread_getspecific, pFL)
-//GO(pthread_getname_np, iFppL)
-//GO(pthread_join, iFLp)
-//GOM(pthread_key_create, iFEpp)
-//GO(pthread_key_delete, iFL)
-//GO2(pthread_kill@GLIBC_2.2.5, iFEpi, my_pthread_kill_old)
-//GOM(pthread_kill, iFEpi)
-//GO(pthread_kill_other_threads_np, vFv)
-//GOM(pthread_mutexattr_destroy, iFEp)
-//GOM(pthread_mutexattr_getkind_np, iFEpp)
-//GOM(pthread_mutexattr_getprotocol, iFEpp)
-//GOM(pthread_mutexattr_getrobust, iFEpp)
-//GOM(pthread_mutexattr_gettype, iFEpp)
-//GOM(pthread_mutexattr_init, iFEp)
-//GOM(pthread_mutexattr_setkind_np, iFEpi)
-//GOM(pthread_mutexattr_setprotocol, iFEpi)
-//GOM(pthread_mutexattr_setpshared, iFEpi)
-//GOM(pthread_mutexattr_setrobust, iFEpi)
-//GOM(pthread_mutexattr_settype, iFEpi)
-//GO(pthread_mutex_consistent, iFp)
-//GO(pthread_mutex_destroy, iFp)
-//// phtread_mutex_t is 40 bytes on x86_64, but 48bytes on ARM64
-//GOM(pthread_mutex_init, iFpp)
-//GO(pthread_mutex_lock, iFp)
-//GO(pthread_mutex_timedlock, iFpp)
-//GO(pthread_mutex_trylock, iFp)
-//GO(pthread_mutex_unlock, iFp)
-//GOM(pthread_once, iFEpp)
-//GO(pthread_rwlockattr_destroy, vFp)
-//GO(pthread_rwlockattr_getkind_np, iFpp)
-//GO(pthread_rwlockattr_init, iFp)
-//GO(pthread_rwlockattr_setkind_np, iFpi)
-//GO(pthread_rwlock_destroy, iFp)
-//GO(pthread_rwlock_init, iFpp)
-//GO(pthread_rwlock_rdlock, iFp)
-//GO(pthread_rwlock_tryrdlock, iFp)
-//GO(pthread_rwlock_trywrlock, iFp)
-//GO(pthread_rwlock_unlock, iFp)
-//GO(pthread_rwlock_wrlock, iFp)
-//GO(pthread_self, LFv)
-//GOM(pthread_setaffinity_np, iFEpLp)
-//GO(pthread_setcancelstate, iFip)
-//GO(pthread_setcanceltype, iFip)
-//GO(pthread_setconcurrency, iFi)
-//GO(pthread_setname_np, iFpp)
-//GO(pthread_setschedparam, iFLip)
-//GO(pthread_setschedprio, iFpi)
-//GO(pthread_setspecific, iFLp)
-//GO(pthread_sigmask, iFipp)
-//GO(pthread_spin_destroy, iFp)
-//GO(pthread_spin_init, iFpi)
-//GO(pthread_spin_lock, iFp)
-//GO(pthread_spin_trylock, iFp)
-//GO(pthread_spin_unlock, iFp)
-//GO(pthread_testcancel, vFv)
-//GO(pthread_timedjoin_np, iFppp)
-//GO(pthread_tryjoin_np, iFpp)
-//GO(pthread_yield, iFv)
-//GO(sem_close, iFp)
-//GO(sem_clockwait, iFppp)
-//GO(sem_destroy, iFp)
-//GO(sem_getvalue, iFpp)
-//GO(sem_init, iFpiu)
-//GO(sem_open, pFpOM)
-//GO(sem_post, iFp)
-//GO(sem_timedwait, iFpp)
-//GO(sem_trywait, iFp)
-//GO(sem_unlink, iFp)
-//GO(sem_wait, iFp)
-//
-//GOM(ptrace, lFEuipp)
+//GOM(ptrace, lFuipp)
 //GO(ptsname, pFi)
 //GOW(ptsname_r, iFipL)
-////GO(__ptsname_r_chk,
-//GOW(putc, iFip)
+////GO(__ptsname_r_chk, 
+//GOW(putc, iFiS)
 //GO(putchar, iFi)
 //GO(putchar_unlocked, iFi)
-//GOW(putc_unlocked, iFip)
+//GOW(putc_unlocked, iFiS)
 //GO(putenv, iFp)
-//GO(putgrent, iFpp)
-////GO(putmsg, // Deprecated
-////GO(putpmsg, // Deprecated
-//GO(putpwent, iFpp)
+//GO(putgrent, iFpS)
+////GO(putmsg, 
+////GO(putpmsg, 
+//GO(putpwent, iFpS)
 //GOW(puts, iFp)
-////GO(putsgent,
-//GO(putspent, iFpp)
+//#ifdef STATICBUILD
+////GO(putsgent, 
+//#else
+//GO(putsgent, iFpS)
+//#endif
+//GO(putspent, iFpS)
 //GOW(pututline, pFp)
 //GO(pututxline, pFp)
-//GO(putw, iFip)
-//GO(putwc, uFup)
-//GO(putwchar, uFu)
-//GO(putwchar_unlocked, uFu)
-//GO(putwc_unlocked, uFup)
+//GO(putw, iFiS)
+//GO(putwc, uFiS)
+//GO(putwchar, uFi)
+//GO(putwchar_unlocked, uFi)
+//GO(putwc_unlocked, uFiS)
 //GO(pvalloc, pFL)
-//GO(__pvalloc, pFL)
-//GO(pwrite, IFipUI)
-////GOW(__pwrite64,
-//GO(pwrite64, lFipLl)
+//GO(pwrite, lFipLl)
+////GOW(__pwrite64, 
+//GO(pwrite64, lFipLI)
 //GO(pwritev, lFipil)
 //GO(pwritev2, lFipili)
-//GO(pwritev64, lFipil)
-//GO(pwritev64v2, lFipili)
-//GO(qecvt, pFDipp)
-//GOW(qecvt_r, iFDipppL)
-//GO(qfcvt, pFDipp)
-//GO(qfcvt_r, iFDipppL)
-//GO(qgcvt, pFDip)
-//GOM(qsort, vFEpLLp)
-//GOWM(qsort_r, vFEpLLpp)
-////GO(query_module, // Deprecated
+//GO(pwritev64, lFipiI)
+//GO(pwritev64v2, lFipiIi)
+//GOD(qecvt, pFDipp, ecvt)
+//GOWD(qecvt_r, iFDipppL, ecvt_r)
+//GOD(qfcvt, pFDipp, fcvt)
+//GOD(qfcvt_r, iFDipppL, fcvt_r)
+//GOD(qgcvt, pFDip, gcvt)
+//GOM(qsort, vFpLLp)
+//GOWM(qsort_r, vFpLLpp)
+////GO(query_module, 
 //GO(quick_exit, vFi)
 //GO(quotactl, iFipip)
 //GO(raise, iFi)
@@ -1585,112 +1631,126 @@ GOM(__libc_free, vFp)
 //GO(rawmemchr, pFpi)
 //GO(rcmd, iFpWpppp)
 //GO(rcmd_af, iFpWppppW)
-////DATAB(__rcmd_errstr,
+////DATAB(__rcmd_errstr, 
 //GOW(__read, lFipL)
 //GO(read, lFipL)
-//GO(readahead, lFilL)
+//GO(readahead, lFiIL)
 //GO(__read_chk, lFipLL)
-//GOW(readdir, pFp) // struct dirent is 280 bytes on x86_64 and ARM64
+//GOW(readdir, pFp)
 //GOW(readdir64, pFp)
 //GOW(readdir64_r, iFppp)
 //GOW(readdir_r, iFppp)
-//GOWM(readlink, lFEppL)
-//GOM(readlinkat, iFEippL)
-////GO(__readlinkat_chk,
-////GO(__readlink_chk,
-////GO(__read_nocancel,
+//GOWM(readlink, lFppL)
+//GOM(readlinkat, lFippL)
+//GOM(__readlinkat_chk, lFippLL)
+//GOM(__readlink_chk, lFppLL)
+////GO(__read_nocancel, 
 //GOW(readv, lFipi)
-GOM(realloc, pFpL)
-//GO(__realloc, pFpL)
+//GO(realloc, pFpL)
 //GO(reallocarray, pFpLL)
-//GOM(realpath, pFEpp)
-//GO2(__realpath_chk, pFEppv, my_realpath)
+//GOM(realpath, pFpp)
+//GO2(__realpath_chk, pFppv, my_realpath)
 //GO(reboot, iFi)
-////GOW(re_comp, // Deprecated
+////GOW(re_comp, 
 //GOW(re_compile_fastmap, iFp)
 //GOW(re_compile_pattern, pFpLp)
 //GOW(__recv, lFipLi)
 //GO(recv, lFipLi)
 //GO(__recv_chk, lFipLLi)
 //GOW(recvfrom, lFipLipp)
-////GO(__recvfrom_chk,
+////GO(__recvfrom_chk, 
 //GO(recvmmsg, iFipuip)
 //GO(recvmsg, lFipi)
-////GOW(re_exec, // Deprecated
+////GOW(re_exec, 
 //GOW(regcomp, iFppi)
 //GOW(regerror, LFippL)
 //GO(regexec, iFppLpi)
 //GOW(regfree, vFp)
-//GOM(__register_atfork, iFEpppp)
-////GOW(register_printf_function,
+//GOM(__register_atfork, iFpppp)
+////GOWM(register_printf_function, iFipp)
 //GOW(register_printf_modifier, iFp)
-//GOWM(register_printf_specifier, iFEipp)
-//GOWM(register_printf_type, iFEp)
-////GO(registerrpc, // Deprecated?
+//GOWM(register_printf_specifier, iFipp)
+//GOWM(register_printf_type, iFp)
+////GOM(registerrpc, iFiiippp)
 //GO(remap_file_pages, iFpLiLi)
-////GOW(re_match, iFppii!)
-////GOW(re_match_2, iFppipii!i)
-////DATA(re_max_failures,
+//GOW(re_match, iFppiip)
+//GOW(re_match_2, iFppipiipi)
+////DATA(re_max_failures, 
 //GO(remove, iFp)
 //GO(removexattr, iFpp)
 //GO(remque, vFp)
 //GO(rename, iFpp)
 //GOW(renameat, iFipip)
 //GOW(renameat2, iFipipu)
-////DATAB(_res,
-////GOW(re_search, iFppiii!)
-////GOW(re_search_2, iFppipiii!i)
-////GOW(re_set_registers, vFp!upp)
+////DATAB(_res, 
+//GOW(re_search, iFppiiip)
+//GOW(re_search_2, iFppipiiipi)
+//GOW(re_set_registers, vFppupp)
 //GOW(re_set_syntax, LFL)
-////DATAB(_res_hconf,
+////DATAB(_res_hconf, 
 //GO(__res_iclose, vFpi)
 //GO(__res_init, iFv)
 //GO(__res_nclose, vFp)
 //GO(__res_ninit, iFp)
-////GO(__resolv_context_get,
-////GO(__resolv_context_get_override,
-////GO(__resolv_context_get_preinit,
-////GO(__resolv_context_put,
-////DATA(__resp,
-////GO(__res_randomid,
+//GO(res_nsearch, iFppiipi)
+////GO(__resolv_context_get, 
+////GO(__resolv_context_get_override, 
+////GO(__resolv_context_get_preinit, 
+////GO(__resolv_context_put, 
+////DATA(__resp, 
+//#ifdef STATICBUILD
+////GO(__res_randomid, 
+//#else
+//GO(__res_randomid, uFv)
+//#endif
 //GO(__res_state, pFv)
-////DATAB(re_syntax_options,
+////DATAB(re_syntax_options, 8)
 //GOW(revoke, iFp)
-//GO(rewind, vFp)
+//GO(rewind, vFS)
 //GOW(rewinddir, vFp)
 //GO(rexec, iFpipppp)
 //GO(rexec_af, iFpippppW)
-////DATAB(rexecoptions,
+////DATAB(rexecoptions, 
 //GO(rindex, pFpi)
 //GOW(rmdir, iFp)
-////DATAB(rpc_createerr,
+//#ifdef STATICBUILD
+////DATAB(rpc_createerr, 
+////GO(_rpc_dtablesize, iFv)
+////GO(__rpc_thread_createerr, "!Fv")
+////GO(__rpc_thread_svc_fdset, "!Fv")
+////GO(__rpc_thread_svc_max_pollfd, pFv)
+////GO(__rpc_thread_svc_pollfd, pFv)
+//#else
+////DATAB(rpc_createerr, 
 //GO(_rpc_dtablesize, iFv)
-////GO(__rpc_thread_createerr, !Fv)
-////GO(__rpc_thread_svc_fdset, !Fv)
+////GO(__rpc_thread_createerr, "!Fv")
+////GO(__rpc_thread_svc_fdset, "!Fv")
 //GO(__rpc_thread_svc_max_pollfd, pFv)
 //GO(__rpc_thread_svc_pollfd, pFv)
+//#endif
 //GO(rpmatch, iFp)
 //GO(rresvport, iFp)
 //GO(rresvport_af, iFpW)
-////GO(rtime, iF!!!)
+//#ifdef STATICBUILD
+////GO(rtime, 
+//#else
+//GO(rtime, iFppp)
+//#endif
 //GO(ruserok, iFpipp)
 //GO(ruserok_af, iFpippW)
-////GO(ruserpass,
+////GO(ruserpass, 
 //GO(__sbrk, pFl)
 //GO(sbrk, pFl)
-//GOW(scalbn, dFdi)
-//GOW(scalbnf, fFfi)
-//GOW(scalbnl, DFDi)
-//GOWM(scandir, iFEpppp)
-//GOWM(scandir64, iFEpppp)
+//GOWM(scandir, iFpppp)
+//GOWM(scandir64, iFpppp)
 //GOWM(scandirat, iFipppp)
-////GO(scandirat64, iFipp@@)
-////GO(scanf, iFpV)
+//GOM(scandirat64, iFipppp)
+//GOM(scanf, iFpV)
 //GO(__sched_cpualloc, pFL)
 //GO(__sched_cpucount, iFLp)
 //GO(__sched_cpufree, vFp)
-//GO(sched_getaffinity, iFiLp)
-//GO(sched_getcpu, iFv)
+//GOM(sched_getaffinity, iFiLp)
+//GOM(sched_getcpu, iFv)
 //GO(__sched_getparam, iFip)
 //GOW(sched_getparam, iFip)
 //GO(__sched_get_priority_max, iFi)
@@ -1700,7 +1760,7 @@ GOM(realloc, pFpL)
 ////GO(__sched_getscheduler, iFi)
 //GOW(sched_getscheduler, iFi)
 //GOW(sched_rr_get_interval, iFip)
-//GO(sched_setaffinity, iFiLp)
+//GOM(sched_setaffinity, iFiLp)
 //GOW(sched_setparam, iFip)
 ////GO(__sched_setscheduler, iFiip)
 //GOW(sched_setscheduler, iFiip)
@@ -1726,13 +1786,13 @@ GOM(realloc, pFpL)
 //GO(sendmsg, lFipi)
 //GOW(sendto, lFipLipu)
 //GO(setaliasent, vFv)
-//GO(setbuf, vFpp)
-//GO(setbuffer, vFppL)
-//GOWM(setcontext, iFEp)
+//GO(setbuf, vFSp)
+//GO(setbuffer, vFSpL)
+//GOWM(setcontext, iFp)
 //GO(setdomainname, iFpL)
 //GO(setegid, iFu)
 //GOW(setenv, iFppi)
-////GO(_seterr_reply, vF!!)
+////GOM(_seterr_reply, vFpp)
 //GO(seteuid, iFu)
 //GO(setfsent, iFv)
 //GO(setfsgid, iFu)
@@ -1743,16 +1803,16 @@ GOM(realloc, pFpL)
 //GO(sethostent, vFi)
 //GO(sethostid, iFl)
 //GO(sethostname, iFpL)
-////GO(setipv4sourcefilter, iFi??uu!)
+//GO(setipv4sourcefilter, iFiuuuup)
 //GOW(setitimer, iFupp)
-//GOM(_setjmp, iFEp)
-//GOM(setjmp, iFEp)
-//GO(setlinebuf, vFp)
+//GOM(_setjmp, iFp)
+//GOM(setjmp, iFp)
+//GO(setlinebuf, vFS)
 //GO(setlocale, pFip)
 //GO(setlogin, iFp)
 //GO(setlogmask, iFi)
 //GO(__setmntent, pFpp)
-//GOW(setmntent, pFpp)
+//GOW(setmntent, SFpp)
 //GO(setnetent, vFi)
 //GO(setnetgrent, iFp)
 //GO(setns, iFii)
@@ -1766,14 +1826,18 @@ GOM(realloc, pFpL)
 //GOW(setresgid, iFuuu)
 //GOW(setresuid, iFuuu)
 //GOW(setreuid, iFuu)
-//GOWM(setrlimit, iFEup)
+//GOWM(setrlimit, iFup)
 //GOW(setrlimit64, iFup)
 //GO(setrpcent, vFi)
 //GO(setservent, vFi)
-////GO(setsgent,
+//#ifdef STATICBUILD
+////GO(setsgent, 
+//#else
+//GO(setsgent, vFv)
+//#endif
 //GOW(setsid, iFv)
 //GOW(setsockopt, iFiiipu)
-////GO(setsourcefilter, iFiupuuu!)
+//GO(setsourcefilter, iFiupuuup)
 //GO(setspent, vFv)
 //GOW(setstate, pFp)
 //GOW(setstate_r, iFpp)
@@ -1783,10 +1847,15 @@ GOM(realloc, pFpL)
 //GO(setusershell, vFv)
 //GOW(setutent, vFv)
 //GO(setutxent, vFv)
-//GO(setvbuf, iFppiL)
+//GO(setvbuf, iFSpiL)
 //GO(setxattr, iFpppLi)
-////GO(sgetsgent,
-////GOW(sgetsgent_r,
+//#ifdef STATICBUILD
+////GO(sgetsgent, pFp)
+////GOW(sgetsgent_r, iFpppLp)
+//#else
+//GO(sgetsgent, pFp)
+//GOW(sgetsgent_r, iFpppLp)
+//#endif
 //GO(sgetspent, pFp)
 //GOW(sgetspent_r, iFpppLp)
 //GO(shmat, pFipi)
@@ -1794,14 +1863,14 @@ GOM(realloc, pFpL)
 //GO(shmdt, iFp)
 //GO(shmget, iFiLi)
 //GOW(shutdown, iFii)
-//GOWM(__sigaction, iFEipp)
-//GOWM(sigaction, iFEipp)
+//GOWM(__sigaction, iFipp)
+//GOWM(sigaction, iFipp)
 //GO(__sigaddset, iFpi)
 //GO(sigaddset, iFpi)
-//GOWM(sigaltstack, iFEpp)
-////GO(sigandset,
+//GOWM(sigaltstack, iFpp)
+//GO(sigandset, iFppp)
 //GOW(sigblock, iFi)
-////GO(__sigdelset,
+////GO(__sigdelset, 
 //GO(sigdelset, iFpi)
 //GO(sigemptyset, iFp)
 //GO(sigfillset, iFp)
@@ -1810,78 +1879,87 @@ GOM(realloc, pFpL)
 //GO(sigignore, iFi)
 //GO(siginterrupt, iFii)
 //GO(sigisemptyset, iFp)
-////GO(__sigismember,
+////GO(__sigismember, 
 //GO(sigismember, iFpi)
-//GOM(siglongjmp, vFEpi)
-//GOWM(signal, pFEip)
+//GOM(siglongjmp, vFpi)
+//GOWM(signal, pFip)
 //GO(signalfd, iFipi)
 //GO(__signbit, iFd)
 //GO(__signbitf, iFf)
-//GO(__signbitl, iFD)
+//GOD(__signbitl, iFD, __signbit)
 //GO(sigorset, iFppp)
-////GO(__sigpause,
-////GOW(sigpause, // Deprecated
+//#ifdef STATICBUILD
+////GO(__sigpause, 
+////GOW(sigpause, 
+//#else
+//GO(__sigpause, iFii)
+////GOW(sigpause, 
+//#endif
 //GO(sigpending, iFp)
 //GOW(sigprocmask, iFipp)
-////GOW(sigqueue, iFii?)
+////GOW(sigqueue, "iFii?")
 //GO(sigrelse, iFi)
-////GOW(sigreturn, iF!)
-//GOM(sigset, pFEip)
-//GOM(__sigsetjmp, iFEpi)
-//GOM(sigsetjmp, iFEpi)
+//GOW(sigreturn, iFp)
+//GOM(sigset, pFip)
+//GOM(__sigsetjmp, iFpi)
+//GOM(sigsetjmp, iFpi)
 //GOW(sigsetmask, iFi)
 //GO(sigstack, iFpp)
 //GO(__sigsuspend, iFp)
 //GOW(sigsuspend, iFp)
 //GO(__sigtimedwait, iFppp)
 //GOW(sigtimedwait, iFppp)
-////GO(sigvec, // Deprecated
+////GO(sigvec, 
 //GOW(sigwait, iFpp)
 //GOW(sigwaitinfo, iFpp)
 //GOW(sleep, uFu)
-//GOM(__snprintf, iFEpLpV)
-//GOWM(snprintf, iFEpLpV)
-//GOWM(__snprintf_chk, iFEpLiLpV)
+//GOM(__snprintf, iFpLpV)
+//GOWM(snprintf, iFpLpV)
+//GOWM(__snprintf_chk, iFpLiLpV)
 //GO(sockatmark, iFi)
 //GO(__socket, iFiii)
 //GOW(socket, iFiii)
 //GOW(socketpair, iFiiip)
 //GO(splice, lFipipLu)
-//GOM(sprintf, iFEppV)
-//GOM(__sprintf_chk, iFEpilpV)
-////GOW(sprofil,
+//GOM(sprintf, iFppV)
+//GOM(__sprintf_chk, iFpilpV)
+//#ifdef STATICBUILD
+////GOW(sprofil, 
+//#else
+//GOW(sprofil, iFpipu)
+//#endif
 //GOW(srand, vFu)
 //GO(srand48, vFl)
 //GO(srand48_r, iFlp)
 //GOW(srandom, vFu)
 //GOW(srandom_r, iFup)
-//GOM(sscanf, iFEppV)
-////GOW(ssignal, @Fi@)
-////GO(sstk,
-//GOM(__stack_chk_fail, vFEv)
-//GOM(stat, iFEpp)
-//GOM(stat64, iFEpp)
-////GO(__statfs,
+//GOM(sscanf, iFppV)
+////GOWM(ssignal, pFip)
+////GO(sstk, 
+//GOM(__stack_chk_fail, vFv)
+//GOM(stat, iFpp)
+//GOM(stat64, iFpp)
+////GO(__statfs, 
 //GOW(statfs, iFpp)
 //GOW(statfs64, iFpp)
 //GOW(statvfs, iFpp)
 //GOW(statvfs64, iFpp)
-//GO(statx, iFipiup)
-//DATA(stderr, sizeof(void*))
-//DATA(stdin, sizeof(void*))
-//DATA(stdout, sizeof(void*))
-////GOW(step,
-//GOM(stime, iFEp)
+//GOM(statx, iFipiup)
+//DATA(stderr, 8)
+//DATA(stdin, 8)
+//DATA(stdout, 8)
+////GOW(step, 
+//GOM(stime, iFp)
 //GO(__stpcpy, pFpp)
 //GO(stpcpy, pFpp)
 //GO(__stpcpy_chk, pFppL)
-////GO(__stpcpy_small,
+////GO(__stpcpy_small, 
 //GO(__stpncpy, pFppL)
 //GO(stpncpy, pFppL)
 //GO(__stpncpy_chk, pFppLL)
 //GO(__strcasecmp, iFpp)
 //GO(strcasecmp, iFpp)
-////GO(__strcasecmp_l,
+////GO(__strcasecmp_l, 
 //GO(strcasecmp_l, iFppp)
 //GO(__strcasestr, pFpp)
 //GOW(strcasestr, pFpp)
@@ -1895,35 +1973,43 @@ GOM(realloc, pFpL)
 //GOW(strcoll_l, iFppp)
 //GO(strcpy, pFpp)
 //GO(__strcpy_chk, pFppL)
-////GO(__strcpy_small,
+////GO(__strcpy_small, 
 //GO(strcspn, LFpp)
-////GO(__strcspn_c1,
-////GO(__strcspn_c2,
-////GO(__strcspn_c3,
+////GO(__strcspn_c1, 
+////GO(__strcspn_c2, 
+////GO(__strcspn_c3, 
 //GO(__strdup, pFp)
 //GOW(strdup, pFp)
 //GO(strerror, pFi)
+//GOW(strerrorname_np, pFi)
+//GOW(strerrordesc_np, pFi)
 //GO(strerror_l, pFip)
 //GO(__strerror_r, pFipL)
 //GO(strerror_r, pFipL)
+//#ifdef STATICBUILD
 ////GO(strfmon, lFpLpV)
-////GO(__strfmon_l,
-////GOW(strfmon_l, lFpLppV)
+////GO(__strfmon_l, 
+//#else
+//GO(strfmon, lFpLpdddddd)        // should be V, but only double are allowed...
+////GO(__strfmon_l, 
+//#endif
+//GOW(strfmon_l, lFpLppdddddd)    // should be V, but only double are allowed...
 //GO(strfromd, iFpLpd)
 //GO(strfromf, iFpLpf)
-//GO(strfromf128, iFpLpD)
+//GOD(strfromf128, iFpLpD, strfromf64)
 //GO(strfromf32, iFpLpf)
 //GO(strfromf32x, iFpLpd)
 //GO(strfromf64, iFpLpd)
-//GO(strfromf64x, iFpLpD)
-//GO(strfroml, iFpLpD)
+//GOD(strfromf64x, iFpLpD, strfromf32x)
+//GOD(strfroml, iFpLpD, strfromd)
 //GO(strfry, pFp)
 //GO(strftime, LFpLpp)
 //GO(__strftime_l, LFpLppL)
 //GOW(strftime_l, LFpLppp)
 //GO(strlen, LFp)
+//GO(__strlcpy_chk, LFppLL)
 //GO(strncasecmp, iFppL)
-////GO(__strncasecmp_l,
+////GO(__strncasecmp_l, 
 //GO(strncasecmp_l, iFppLp)
 //GO(strncat, pFppL)
 //GO(__strncat_chk, pFppLL)
@@ -1934,57 +2020,64 @@ GOM(realloc, pFpL)
 //GO(strndup, pFpL)
 //GO(strnlen, LFpL)
 //GO(strpbrk, pFpp)
-////GO(__strpbrk_c2,
-////GO(__strpbrk_c3,
+////GO(__strpbrk_c2, 
+////GO(__strpbrk_c3, 
 //GO(strptime, pFppp)
-////GOW(strptime_l, pFppp!)
+//GOW(strptime_l, pFpppp)
 //GO(strrchr, pFpi)
 //GOW(strsep, pFpp)
-////GO(__strsep_1c,
-////GO(__strsep_2c,
-////GO(__strsep_3c,
-////GO(__strsep_g,
+////GO(__strsep_1c, 
+////GO(__strsep_2c, 
+////GO(__strsep_3c, 
+////GO(__strsep_g, 
 //GO(strsignal, pFi)
 //GO(strspn, LFpp)
-////GO(__strspn_c1,
-////GO(__strspn_c2,
-////GO(__strspn_c3,
+////GO(__strspn_c1, 
+////GO(__strspn_c2, 
+////GO(__strspn_c3, 
 //GO(strstr, pFpp)
 //GO(strtod, dFpp)
 //GO(__strtod_internal, dFppi)
 //GO(__strtod_l, dFppp)
 //GOW(strtod_l, dFppp)
-////GO(__strtod_nan,
+////GO(__strtod_nan, 
 //GO(strtof, fFpp)
-//GO(strtof128, DFpp)
-////GO(__strtof128_internal,
-////GOW(strtof128_l,
-////GO(__strtof128_nan,
+//GOD(strtof128, DFpp, strtof64)
+////GO(__strtof128_internal, 
+////GOW(strtof128_l, 
+////GO(__strtof128_nan, 
 //GOW(strtof32, fFpp)
-////GOW(strtof32_l, fFpp!)
+//GOW(strtof32_l, fFppp)
 //GOW(strtof32x, dFpp)
-////GOW(strtof32x_l, dFpp!)
+//GOW(strtof32x_l, dFppp)
 //GOW(strtof64, dFpp)
-////GOW(strtof64_l, dFpp!)
-//GOW(strtof64x, DFpp)
-////GOW(strtof64x_l, DFpp!)
+//GOW(strtof64_l, dFppp)
+//GOWD(strtof64x, DFpp, strtof32x)
+//GOWD(strtof64x_l, DFppp, strtof32x_l)
 //GO(__strtof_internal, fFppi)
-//GO(__strtof_l, fFppL)
+//GO(__strtof_l, fFppp)
 //GOW(strtof_l, fFppp)
-////GO(__strtof_nan,
-//GO(strtoimax, lFppi)
+////GO(__strtof_nan, 
+//GO(strtoimax, IFppi)
+//GO2(__isoc23_strtoimax, IFppi, strtoimax)
+//GO2(__isoc23_strtoll_l, IFppip, strtoll_l)
+//GO2(__isoc23_strtoull_l, UFppip, strtoull_l)
+//GO2(__isoc23_vsscanf, iFppA, my_vsscanf)
+//GO2(__isoc23_wcstoll, IFppi, wcstoll)
+//GO2(__isoc23_wcstoul, LFppi, wcstoul)
+//GO2(__isoc23_wcstoull, UFppi, wcstoull)
 //GO(strtok, pFpp)
 //GO(__strtok_r, pFppp)
 //GOW(strtok_r, pFppp)
-////GO(__strtok_r_1c,
+////GO(__strtok_r_1c, 
 //GO(strtol, lFppi)
-//GO(strtold, DFpp)
-//GO(__strtold_internal, DFppi)
-//GO(__strtold_l, DFppp)
-//GOW(strtold_l, DFppp)
-////GO(__strtold_nan,
+//GOD(strtold, DFpp, strtod)
+//GOD(__strtold_internal, DFppi, __strtod_internal)
+//GOD(__strtold_l, DFppp, __strtod_l)
+//GOWD(strtold_l, DFppp, strtod_l)
+////GO(__strtold_nan, 
 //GO(__strtol_internal, lFppii)
-//GO(__strtol_l, lFppi)
+//GO(__strtol_l, lFppip)
 //GO(strtol_l, lFppip)
 //GOW(strtoll, IFppi)
 //GO(__strtoll_internal, IFppii)
@@ -1993,76 +2086,120 @@ GOM(realloc, pFpL)
 //GOW(strtoq, IFppi)
 //GO(strtoul, LFppi)
 //GO(__strtoul_internal, LFppii)
-////GO(__strtoul_l,
+////GO(__strtoul_l, 
 //GO(strtoul_l, LFppip)
 //GOW(strtoull, UFppi)
 //GO(__strtoull_internal, UFppii)
-//GOW(__strtoull_l, LFppip)
+//GOW(__strtoull_l, UFppip)
 //GOW(strtoull_l, UFppip)
-//GO(strtoumax, LFppi)
+//GO(strtoumax, UFppi)
+//GO2(__isoc23_strtoumax, UFppi, strtoumax)
 //GOW(strtouq, UFppi)
-////GO(__strverscmp,
+////GO(__strverscmp, 
 //GOW(strverscmp, iFpp)
 //GO(strxfrm, LFppL)
 //GO(__strxfrm_l, LFppLL)
 //GO(strxfrm_l, LFppLp)
-////GO(stty, // Deprecated
-////DATAB(svcauthdes_stats,
-////GO(svcerr_auth, vF!u)
-////GO(svcerr_decode, vF!)
-////GO(svcerr_noproc, vF!)
-////GO(svcerr_noprog, vF!)
-////GO(svcerr_progvers, vF!LL)
-////GO(svcerr_systemerr, vF!)
-////GO(svcerr_weakauth, vF!)
+////GO(stty, 
+//#ifdef STATICBUILD
+////DATAB(svcauthdes_stats, 
+////GO(svcerr_auth, "vF!u")
+////GO(svcerr_decode, "vF!")
+////GO(svcerr_noproc, "vF!")
+////GO(svcerr_noprog, "vF!")
+////GO(svcerr_progvers, "vF!uu")
+////GO(svcerr_systemerr, "vF!")
+////GO(svcerr_weakauth, "vF!")
+////GO(svc_exit, vFv)
+////GO(svcfd_create, "!Fiuu")
+////DATAB(svc_fdset, 
+////GO(svc_getreq, vFi)
+////GO(svc_getreq_common, vFi)
+////GO(svc_getreq_poll, vFpi)
+////GO(svc_getreqset, "vF!")
+////DATAB(svc_max_pollfd, 
+////DATAB(svc_pollfd, 
+////GO(svcraw_create, "!Fv")
+////GO(svc_register, "iF!LL@i")
+////GO(svc_run, vFv)
+////GO(svc_sendreply, "iF!@p")
+////GO(svctcp_create, "!Fiuu")
+////GO(svcudp_bufcreate, "!Fiuu")
+////GO(svcudp_create, "!Fi")
+////GO(svcudp_enablecache, 
+////GO(svcunix_create, "!Fiuup")
+////GO(svcunixfd_create, 
+////GO(svc_unregister, vFLL)
+//#else
+////DATAB(svcauthdes_stats, 
+////GOM(svcerr_auth, vFpu)
+////GOM(svcerr_decode, vFp)
+////GOM(svcerr_noproc, vFp)
+////GOM(svcerr_noprog, vFp)
+////GOM(svcerr_progvers, vFpuu)
+////GOM(svcerr_systemerr, vFp)
+////GOM(svcerr_weakauth, vFp)
 //GO(svc_exit, vFv)
-////GO(svcfd_create, !Fiuu)
-////DATAB(svc_fdset,
+////GOM(svcfd_create, pFiuu)
+////DATAB(svc_fdset, 128)
 //GO(svc_getreq, vFi)
 //GO(svc_getreq_common, vFi)
 //GO(svc_getreq_poll, vFpi)
-////GO(svc_getreqset, vF!)
-////DATAB(svc_max_pollfd,
-////DATAB(svc_pollfd,
-////GO(svcraw_create, !Fv)
-////GO(svc_register, iF!LL@L)
+//GO(svc_getreqset, vFp)
+////DATAB(svc_max_pollfd, 4)
+////DATAB(svc_pollfd, 8)
+////GOM(svcraw_create, pFv)
+////GOM(svc_register, iFpLLpi)
 //GO(svc_run, vFv)
-////GO(svc_sendreply, iF!@p)
-////GO(svctcp_create, !Fiuu)
-////GO(svcudp_bufcreate, !Fiuu)
-////GO(svcudp_create, !Fi)
-////GO(svcudp_enablecache,
-////GO(svcunix_create, !Fiuup)
-////GO(svcunixfd_create,
+////GOM(svc_sendreply, iFppp)
+////GOM(svctcp_create, pFiuu)
+////GOM(svcudp_bufcreate, pFiuu)
+////GOM(svcudp_create, pFi)
+////GOM(svcudp_enablecache, iFpL)
+////GOM(svcunix_create, pFiuup)
+////GOM(svcunixfd_create, pFiuu)
 //GO(svc_unregister, vFLL)
+//#endif
 //GO(swab, vFppl)
-//GOWM(swapcontext, iFEpp)
-////GOW(swapoff,
-////GOW(swapon,
-//GOM(swprintf, iFEpLpV)
-//GOM(__swprintf_chk, iFEpLiLpV)
-//GOM(swscanf, iFEppV)
+//GOWM(swapcontext, iFpp)
+//#ifdef STATICBUILD
+////GOW(swapoff, 
+////GOW(swapon, 
+//#else
+//GOW(swapoff, iFp)
+//GOW(swapon, iFpi)
+//#endif
+//GOM(swprintf, iFpLpV)
+//GOM(__swprintf_chk, iFpLiLpV)
+//GOM(swscanf, iFppV)
 //GOW(symlink, iFpp)
 //GO(symlinkat, iFpip)
 //GO(sync, vFv)
-//GO(sync_file_range, iFillu)
+//GO(sync_file_range, iFiIIu)
 //GO(syncfs, iFi)
-//GOM(syscall, lFEv)
-//GO(__sysconf, lFi)
-//GO(sysconf, IFi)
-//GO(__sysctl, iFpipppL)
-//GOW(sysctl, iFpipppL) // Deprecated
-//DATA(_sys_errlist, sizeof(void*))
-//DATA(sys_errlist, sizeof(void*))
+//GOM(syscall, lFv)
+//GOM(__sysconf, lFi)
+//GOM(sysconf, lFi)
+//#ifdef STATICBUILD
+////GO(__sysctl, 
+////GOW(sysctl, 
+////DATA(_sys_errlist, 8)
+////DATA(sys_errlist, 8)
+//#else
+//GOM(__sysctl, iFpipppL)
+//GOWM(sysctl, iFpipppL)
+//DATA(_sys_errlist, 8)
+//DATA(sys_errlist, 8)
+//#endif
 //GOW(sysinfo, iFp)
-//GOM(syslog, vFEipV)
-//GOM(__syslog_chk, vFEiipV)
-////DATA(sys_sigabbrev,
-////DATA(_sys_siglist,
-////DATA(sys_siglist,
+//GOM(syslog, vFipV)
+//GOM(__syslog_chk, vFiipV)
+////DATA(sys_sigabbrev, 
+////DATA(_sys_siglist, 
+////DATA(sys_siglist, 
 //GOW(system, iFp)
-//GOM(__sysv_signal, pFEip)
-//GOWM(sysv_signal, pFEip)
+//GOM(__sysv_signal, pFip)
+//GOWM(sysv_signal, pFip)
 //GOW(tcdrain, iFi)
 //GO(tcflow, iFii)
 //GO(tcflush, iFii)
@@ -2072,20 +2209,39 @@ GOM(realloc, pFpL)
 //GO(tcsendbreak, iFii)
 //GO(tcsetattr, iFiip)
 //GO(tcsetpgrp, iFii)
-////GO(__tdelete,
-//GOWM(tdelete, pFEppp)
-//GOWM(tdestroy, vFEpp)
+////GO(__tdelete, 
+//GOWM(tdelete, pFppp)
+//GOWM(tdestroy, vFpp)
 //GO(tee, lFiiLu)
 //GO(telldir, lFp)
 //GO(tempnam, pFpp)
 //GOW(textdomain, pFp)
-////GO(__tfind,
-//GOWM(tfind, pFEppp)
+////GO(__tfind, 
+//GOWM(tfind, pFppp)
 //GOW(tgkill, iFiii)
-////GO(thrd_current,
-////GO(thrd_equal,
-////GO(thrd_sleep,
-////GO(thrd_yield,
+//#ifdef STATICBUILD
+////GO(thrd_current, 
+//#else
+//GO(thrd_current, LFv)
+//#endif
+//GO(thrd_exit, vFi)
+//#ifdef STATICBUILD
+////GO(thrd_equal, 
+////GO(thrd_sleep, 
+////GO(thrd_yield, 
+////GO(tss_create,
+////GO(tss_get,
+////GO(tss_delete,
+////GO(tss_set,
+//#else
+//GO(thrd_equal, iFLL)
+//GO(thrd_sleep, iFpp)
+//GO(thrd_yield, vFv)
+//GOM(tss_create, iFpp)
+//GO(tss_get, pFL)
+//GO(tss_delete, vFL)
+//GO(tss_set, iFLp)
+//#endif
 //GO(time, lFp)
 //GO(timegm, lFp)
 //GOW(timelocal, lFp)
@@ -2094,25 +2250,25 @@ GOM(realloc, pFpL)
 //GO(timerfd_settime, iFiipp)
 //GOW(times, lFp)
 //GO(timespec_get, iFpi)
-//DATAB(__timezone, sizeof(void*))
-//DATAV(timezone, sizeof(void*))
-//GO(tmpfile, pFv)
-//GOW(tmpfile64, pFv)
+//DATAB(__timezone, 8)
+//DATAV(timezone, 8)
+//GO(tmpfile, SFv)
+//GOW(tmpfile64, SFv)
 //GO(tmpnam, pFp)
 //GO(tmpnam_r, pFp)
 //GO(toascii, iFi)
-////GOW(__toascii_l,
+////GOW(__toascii_l, 
 //GO(_tolower, iFi)
 //GO(tolower, iFi)
-////GO(__tolower_l, iFi!)
+//GO(__tolower_l, iFip)
 //GOW(tolower_l, iFip)
 //GO(_toupper, iFi)
 //GO(toupper, iFi)
-////GO(__toupper_l, iFi!)
+//GO(__toupper_l, iFip)
 //GOW(toupper_l, iFip)
-////GO(__towctrans,
+////GO(__towctrans, 
 //GOW(towctrans, uFup)
-////GO(__towctrans_l,
+////GO(__towctrans_l, 
 //GOW(towctrans_l, uFupp)
 //GOW(towlower, uFu)
 //GO(__towlower_l, iFip)
@@ -2120,32 +2276,36 @@ GOM(realloc, pFpL)
 //GOW(towupper, uFu)
 //GO(__towupper_l, iFip)
 //GOW(towupper_l, uFup)
-//GO(tr_break, vFv)
-//GO(truncate, iFpI)
-//GO(truncate64, iFpl)
-////GO(__tsearch,
-//GOWM(tsearch, pFEppp)
+////GO(tr_break, 
+//GO(truncate, iFpl)
+//GO(truncate64, iFpI)
+////GO(__tsearch, 
+//GOWM(tsearch, pFppp)
 //GO(ttyname, pFi)
 //GO(ttyname_r, iFipL)
-////GO(__ttyname_r_chk,
+////GO(__ttyname_r_chk, 
 //GO(ttyslot, iFv)
-////GO(__twalk,
-////GOW(twalk, vFp@)
-////GOW(twalk_r, vFp@p)
-//DATA(__tzname, sizeof(void*))
-//DATA(tzname, sizeof(void*)) //type V
+////GO(__twalk, 
+//GOWM(twalk, vFpp)
+////GOWM(twalk_r, vFppp)
+//DATA(__tzname, 16)
+//DATAV(tzname, 16)
 //GOW(tzset, vFv)
 //GO(ualarm, uFuu)
-//GO(__uflow, iFp)
+//GO(__uflow, iFS)
 //GOW(ulckpwdf, iFv)
-////GOW(ulimit, lFiV) // Deprecated
+//#ifdef STATICBUILD
+////GOW(ulimit, lFiV)
+//#else
+//GOW(ulimit, lFiN)
+//#endif
 //GOW(umask, uFu)
 //GOW(umount, iFp)
 //GOW(umount2, iFpi)
 //GOWM(uname, iFp)
 //GO(__underflow, iFp)
-//GOW(ungetc, iFip)
-//GO(ungetwc, uFup)
+//GOW(ungetc, iFiS)
+//GO(ungetwc, uFuS)
 //GOW(unlink, iFp)
 //GO(unlinkat, iFipi)
 //GO(unlockpt, iFi)
@@ -2153,59 +2313,63 @@ GOM(realloc, pFpL)
 //GO(unshare, iFi)
 //GOW(updwtmp, vFpp)
 //GO(updwtmpx, vFpp)
-////GO(uselib, // Deprecated
+////GO(uselib, 
 //GO(__uselocale, pFp)
 //GOW(uselocale, pFp)
+//#ifdef STATICBUILD
+////GO(user2netname, 
+//#else
 //GO(user2netname, iFpup)
+//#endif
 //GO(usleep, iFu)
-////GO(ustat, // Deprecated
+////GO(ustat, 
 //GO(utime, iFpp)
 //GO(utimensat, iFippi)
 //GOW(utimes, iFpp)
 //GOW(utmpname, iFp)
 //GO(utmpxname, iFp)
 //GO(valloc, pFL)
-//GOWM(vasprintf, iFEppA)
-//GOM(__vasprintf_chk, iFEpipp)
-//GOM(vdprintf, iFEipA)
-//GOM(__vdprintf_chk, iFEiipA)
-////GO(verr, vFipA)
-////GO(verrx, vFipA)
+//GOWM(vasprintf, iFppA)
+//GOM(__vasprintf_chk, iFpipp)
+//GOM(vdprintf, iFipA)
+//GOM(__vdprintf_chk, iFiipA)
+//GOM(verr, vFipA)
+//GOM(verrx, vFipA)
 //GOW(versionsort, iFpp)
 //GOW(versionsort64, iFpp)
-////GO(__vfork,
-//GOWM(vfork, iFEv)
-//GOM(vfprintf, iFEppA)
-//GOM(__vfprintf_chk, iFEpvpp)
-////GO(__vfscanf,
-//GOWM(vfscanf, iFEppA)
-//GOWM(vfwprintf, iFEppA)
-//GOM(__vfwprintf_chk, iFEpipA)
-////GOW(vfwscanf, iFppA)
+////GO(__vfork, 
+//GOWM(vfork, iFv)
+//GOM(vfprintf, iFSpA)
+//GOM(__vfprintf_chk, iFpvpp)
+////GO(__vfscanf, 
+//GOWM(vfscanf, iFSpA)
+//GOWM(vfwprintf, iFSpA)
+//GOM(__vfwprintf_chk, iFpipA)
+//GOWM(vfwscanf, iFSpA)
 //GO(vhangup, iFv)
-////GO(vlimit, // Deprecated
+////GO(vlimit, 
 //GO(vmsplice, lFipLu)
-//GOM(vprintf, iFEpA)
-//GOM(__vprintf_chk, iFEvpp)
-////GOW(vscanf, iFpA)
-//GOWM(__vsnprintf, iFEpLpA)
-//GOWM(vsnprintf, iFEpLpA)
-//GOM(__vsnprintf_chk, iFEpLiLpp)
-//GOWM(vsprintf, iFEppA)
-//GOM(__vsprintf_chk, iFEpvvppp)
-//GOWM(__vsscanf, iFEppp)
-//GOWM(vsscanf, iFEppA)
-//GOWM(vswprintf, iFEpLpA)
-//GOWM(__vswprintf_chk, iFEpuvvppp)
-//GOM(vswscanf, iFEppA)
-//GOM(vsyslog, vFEipA)
-//GOM(__vsyslog_chk, vFEiipA)
-////GO(vtimes, // Deprecated
-////GO(vwarn, vFpA)
-////GO(vwarnx, vFpA)
-//GOM(vwprintf, iFEpA)
-////GO(__vwprintf_chk,
-////GO(vwscanf, iFpA)
+//GOM(vprintf, iFpA)
+//GOM(__vprintf_chk, iFvpp)
+//GOWM(vscanf, iFpA)
+//GOWM(__vsnprintf, iFpLpA)
+//GOWM(vsnprintf, iFpLpA)
+//GOM(__vsnprintf_chk, iFpLiLpp)
+//GOWM(vsprintf, iFppA)
+//GOM(__vsprintf_chk, iFpvvppp)
+//GOWM(__vsscanf, iFppp)
+//GOWM(vsscanf, iFppA)
+//GOWM(vswprintf, iFpLpA)
+//GOWM(__vswprintf_chk, iFpuvvppp)
+//GOM(vswscanf, iFppA)
+//GOM(vsyslog, vFipA)
+//GOM(__vsyslog_chk, vFiipA)
+////GO(vtimes, 
+//GOM(vwarn, vFpA)
+//GOM(vwarnx, vFpA)
+//GOM(vwprintf, iFpA)
+////GO(__vwprintf_chk, 
+//GOM(vwscanf, iFpA)
 //GOW(__wait, iFp)
 //GOW(wait, iFp)
 //GOW(wait3, iFpip)
@@ -2213,21 +2377,21 @@ GOM(realloc, pFpL)
 //GOW(waitid, iFuupi)
 //GO(__waitpid, iFipi)
 //GOW(waitpid, iFipi)
-//GOM(warn, vFEpV)
-//GOM(warnx, vFEpV)
+//GOM(warn, vFpV)
+//GOM(warnx, vFpV)
 //GOW(wcpcpy, pFpp)
-////GO(__wcpcpy_chk,
+////GO(__wcpcpy_chk, 
 //GO(wcpncpy, pFppL)
-////GO(__wcpncpy_chk,
-//GO(wcrtomb, LFpup)
-////GO(__wcrtomb_chk,
+////GO(__wcpncpy_chk, 
+//GO(wcrtomb, LFpip)
+//GO(__wcrtomb_chk, LFpupL)
 //GOW(wcscasecmp, iFpp)
 //GO(__wcscasecmp_l, iFppp)
 //GOW(wcscasecmp_l, iFppp)
 //GOW(wcscat, pFpp)
 //GO(__wcscat_chk, pFppL)
-//GO(wcschr, pFpu)
-//GO(wcschrnul, pFpu)
+//GO(wcschr, pFpi)
+//GO(wcschrnul, pFpi)
 //GO(wcscmp, iFpp)
 //GOW(wcscoll, iFpp)
 //GO(__wcscoll_l, iFppp)
@@ -2241,8 +2405,8 @@ GOM(realloc, pFpL)
 //GO(wcsftime_l, LFpLppp)
 //GO(wcslen, LFp)
 //GO(wcsncasecmp, iFppL)
-////GO(__wcsncasecmp_l,
-////GOW(wcsncasecmp_l, iFppL!)
+////GO(__wcsncasecmp_l, 
+//GOW(wcsncasecmp_l, iFppLp)
 //GO(wcsncat, pFppL)
 //GO(__wcsncat_chk, pFppLL)
 //GO(wcsncmp, iFppL)
@@ -2250,58 +2414,68 @@ GOM(realloc, pFpL)
 //GO(__wcsncpy_chk, pFppLL)
 //GO(wcsnlen, LFpL)
 //GO(wcsnrtombs, LFppLLp)
+//#ifdef STATICBUILD
 ////GO(__wcsnrtombs_chk,
+//#else
+//GO(__wcsnrtombs_chk, LFppLLpL)
+//#endif
 //GO(wcspbrk, pFpp)
-//GO(wcsrchr, pFpu)
+//GO(wcsrchr, pFpi)
 //GO(wcsrtombs, LFppLp)
-////GO(__wcsrtombs_chk,
+//GO(__wcsrtombs_chk, LFppLpL)
 //GO(wcsspn, LFpp)
 //GO(wcsstr, pFpp)
 //GO(wcstod, dFpp)
-////GO(__wcstod_internal,
-////GO(__wcstod_l,
-////GOW(wcstod_l, dFpp!)
+////GO(__wcstod_internal, 
+////GO(__wcstod_l, 
+//GOW(wcstod_l, dFppp)
 //GO(wcstof, fFpp)
-//GO(wcstof128, DFpp)
-////GO(__wcstof128_internal,
-////GOW(wcstof128_l,
+//GOD(wcstof128, DFpp, wcstof64)
+////GO(__wcstof128_internal, 
+////GOW(wcstof128_l, 
 //GOW(wcstof32, fFpp)
-////GOW(wcstof32_l, fFpp!)
+//GOW(wcstof32_l, fFppp)
 //GOW(wcstof32x, dFpp)
-////GOW(wcstof32x_l, dFpp!)
+//GOW(wcstof32x_l, dFppp)
 //GOW(wcstof64, dFpp)
-////GOW(wcstof64_l, dFpp!)
-//GOW(wcstof64x, DFpp)
-////GOW(wcstof64x_l, DFpp!)
-////GO(__wcstof_internal,
-////GO(__wcstof_l,
-////GOW(wcstof_l, fFpp!)
-//GO(wcstoimax, lFppi)
+//GOW(wcstof64_l, dFppp)
+//GOWD(wcstof64x, DFpp, wcstof32x)
+//GOWD(wcstof64x_l, DFppp, wcstof32x_l)
+////GO(__wcstof_internal, 
+////GO(__wcstof_l, 
+//GOW(wcstof_l, fFppp)
+//GO(wcstoimax, IFppi)
 //GO(wcstok, pFppp)
 //GO(wcstol, lFppi)
-//GO(wcstold, DFpp)
-////GO(__wcstold_internal,
-////GO(__wcstold_l,
-////GOW(wcstold_l, DFpp!)
-////GO(__wcstol_internal,
-////GO(__wcstol_l,
-////GOW(wcstol_l, lFppi!)
+//GOD(wcstold, DFpp, wcstod)
+////GO(__wcstold_internal, 
+////GO(__wcstold_l, 
+//GOWD(wcstold_l, DFppp, wcstod_l)
+////GO(__wcstol_internal, 
+////GO(__wcstol_l, 
+//GOW(wcstol_l, lFppip)
+//GO2(__isoc23_wcstol_l, lFppip, wcstol_l)
 //GOW(wcstoll, IFppi)
-////GO(__wcstoll_internal,
-////GOW(__wcstoll_l,
-////GOW(wcstoll_l, IFppi!)
+////GO(__wcstoll_internal, 
+////GOW(__wcstoll_l, 
+//GOW(wcstoll_l, IFppip)
 //GO(wcstombs, LFppL)
-////GO(__wcstombs_chk,
+//#ifdef STATICBUILD
+////GO(__wcstombs_chk, LFppLL)    // it's sometimes not defined, like in LA64 plateform, so lets no wrap it for now
+//#else
+//GO(__wcstombs_chk, LFppLL)
+//#endif
 //GOW(wcstoq, IFppi)
 //GO(wcstoul, LFppi)
-////GO(__wcstoul_internal,
-////GO(__wcstoul_l,
-////GOW(wcstoul_l, LFppi!)
+////GO(__wcstoul_internal, 
+////GO(__wcstoul_l, 
+//GOW(wcstoul_l, LFppip)
+//GO2(__isoc23_wcstoul_l, LFppip, wcstoul_l)
 //GOW(wcstoull, UFppi)
-////GO(__wcstoull_internal,
-////GOW(__wcstoull_l,
-////GOW(wcstoull_l, UFppi!)
-//GO(wcstoumax, LFppi)
+////GO(__wcstoull_internal, 
+////GOW(__wcstoull_l, 
+//GOW(wcstoull_l, UFppip)
+//GO(wcstoumax, UFppi)
 //GOW(wcstouq, UFppi)
 //GOW(wcswcs, pFpp)
 //GO(wcswidth, iFpL)
@@ -2309,161 +2483,701 @@ GOM(realloc, pFpL)
 //GO(__wcsxfrm_l, LFppLL)
 //GO(wcsxfrm_l, LFppLp)
 //GO(wctob, iFu)
-//GO(wctomb, iFpu)
+//GO(wctomb, iFpi)
 //GO(__wctomb_chk, iFpuL)
 //GOW(wctrans, pFp)
-////GO(__wctrans_l,
+////GO(__wctrans_l, 
 //GOW(wctrans_l, pFpp)
 //GOW(wctype, LFp)
 //GOW(wctype_l, LFpp)
 //GO(__wctype_l, LFpp)
-//GO(wcwidth, iFu)
-//GO(wmemchr, pFpuL)
+//GO(wcwidth, iFi)
+//GO(wmemchr, pFpiL)
 //GO(wmemcmp, iFppL)
 //GOW(wmemcpy, pFppL)
 //GO(__wmemcpy_chk, pFppLL)
 //GO(wmemmove, pFppL)
 //GO(__wmemmove_chk, pFppLL)
 //GOW(wmempcpy, pFppL)
-////GO(__wmempcpy_chk,
-//GO(wmemset, pFpuL)
+////GO(__wmempcpy_chk, 
+//GO(wmemset, pFpiL)
 //GO(__wmemset_chk, pFpuLL)
 //GO(wordexp, iFppi)
 //GO(wordfree, vFp)
-////GO(__woverflow,
-//GOM(wprintf, iFEpV)
-//GOM(__wprintf_chk, lFEipV)
+////GO(__woverflow, 
+//GOM(wprintf, iFpV)
+//GOM(__wprintf_chk, lFipV)
 //GOW(__write, lFipL)
 //GO(write, lFipL)
-////GO(__write_nocancel,
+////GO(__write_nocancel, 
 //GOW(writev, lFipi)
-////GO(wscanf, iFpV)
-////GO(__wuflow,
-////GO(__wunderflow,
-////GO(xdecrypt, // Deprecated
-////GO(xdr_accepted_reply,
-////GO(xdr_array, iF!ppuu@)
-////GO(xdr_authdes_cred,
-////GO(xdr_authdes_verf,
-////GO(xdr_authunix_parms, iF!!)
-////GO(xdr_bool, iF!p)
-////GO(xdr_bytes, iF!ppu)
-////GO(xdr_callhdr, iF!!)
-////GO(xdr_callmsg, iF!!)
-////GO(xdr_char, iF!p)
-////GO(xdr_cryptkeyarg,
-////GO(xdr_cryptkeyarg2,
-////GO(xdr_cryptkeyres,
-////GO(xdr_des_block, iF!!)
-////GO(xdr_double, iF!p)
-////GO(xdr_enum, iF!p)
-////GO(xdr_float, iF!p)
-////GO(xdr_free, vF@p)
-////GO(xdr_getcredres,
-////GO(xdr_hyper, iF!p)
-////GO(xdr_int, iF!p)
-////GO(xdr_int16_t, iF!p)
-////GO(xdr_int32_t, iF!p)
-////GO(xdr_int64_t, iF!p)
-////GO(xdr_int8_t, iF!p)
-////GO(xdr_keybuf,
-////GO(xdr_key_netstarg,
-////GO(xdr_key_netstres,
-////GO(xdr_keystatus,
-////GO(xdr_long, iF!p)
-////GO(xdr_longlong_t, iF!p)
-////GO(xdrmem_create, vF!puu)
-////GO(xdr_netnamestr,
-////GO(xdr_netobj, iF!!)
-////GO(xdr_opaque, iF!pu)
-////GO(xdr_opaque_auth, iF!!)
-////GO(xdr_pmap,
-////GO(xdr_pmaplist,
-////GO(xdr_pointer, iF!pu@)
-////GO(xdr_quad_t, iF!p)
-////GO(xdrrec_create, vF!uup@@)
-////GO(xdrrec_endofrecord, iF!i)
-////GO(xdrrec_eof, iF!)
-////GO(xdrrec_skiprecord, iF!)
-////GO(xdr_reference, iF!pu@)
-////GO(xdr_rejected_reply,
-////GO(xdr_replymsg, iF!!)
-////GO(xdr_rmtcall_args,
-////GO(xdr_rmtcallres,
-////GO(xdr_short, iF!p)
-////GO(xdr_sizeof, LF@p)
-////GO(xdrstdio_create, vF!pu)
-////GO(xdr_string, iF!pu)
-////GO(xdr_u_char, iF!p)
-////GO(xdr_u_hyper, iF!p)
-////GO(xdr_u_int, iF!p)
-////GO(xdr_uint16_t, iF!p)
-////GO(xdr_uint32_t, iF!p)
-////GO(xdr_uint64_t, iF!p)
-////GO(xdr_uint8_t, iF!p)
-////GO(xdr_u_long, iF!p)
-////GO(xdr_u_longlong_t, iF!p)
-////GO(xdr_union, iF!pp!@)
-////GO(xdr_unixcred,
-////GO(xdr_u_quad_t, iF!p)
-////GO(xdr_u_short, iF!p)
-////GO(xdr_vector, iF!puu@)
+//GOM(wscanf, iFpV)
+////GO(__wuflow, 
+////GO(__wunderflow, 
+////GO(xdecrypt, 
+//#ifdef STATICBUILD
+////GOM(xdr_accepted_reply, iFpp)
+////GOM(xdr_array, iFpppuup)
+////GO(xdr_authdes_cred, 
+////GO(xdr_authdes_verf, 
+////GOM(xdr_authunix_parms, iFpp)
+////GOM(xdr_bool, iFpp)
+////GOM(xdr_bytes, iFpppu)
+////GOM(xdr_callhdr, iFpp)
+////GOM(xdr_callmsg, iFpp)
+////GOM(xdr_char, iFpp)
+////GO(xdr_cryptkeyarg, 
+////GO(xdr_cryptkeyarg2, 
+////GO(xdr_cryptkeyres, 
+////GOM(xdr_des_block, iFpp)
+////GOM(xdr_double, iFpp)
+////GOM(xdr_enum, iFpp)
+////GOM(xdr_float, iFpp)
+////GOM(xdr_free, vFpp)
+////GO(xdr_getcredres, 
+////GOM(xdr_hyper, iFpp)
+////GOM(xdr_int, iFpp)
+////GOM(xdr_int16_t, iFpp)
+////GOM(xdr_int32_t, iFpp)
+////GOM(xdr_int64_t, iFpp)
+////GOM(xdr_int8_t, iFpp)
+////GO(xdr_keybuf, 
+////GO(xdr_key_netstarg, 
+////GO(xdr_key_netstres, 
+////GO(xdr_keystatus, 
+////GOM(xdr_long, iFpp)
+////GOM(xdr_longlong_t, iFpp)
+////GOM(xdrmem_create, vFppuu)
+////GO(xdr_netnamestr, 
+////GOM(xdr_netobj, iFpp)
+////GOM(xdr_opaque, iFppu)
+////GOM(xdr_opaque_auth, iFpp)
+////GOM(xdr_pmap, iFpp)
+////GOM(xdr_pmaplist, iFpp)
+////GOM(xdr_pointer, iFppup)
+////GOM(xdr_quad_t, iFpp)
+////GOM(xdrrec_create, vFpuuppp)
+////GOM(xdrrec_endofrecord, iFpi)
+////GOM(xdrrec_eof, iFp)
+////GOM(xdrrec_skiprecord, iFp)
+////GOM(xdr_reference, iFppup)
+////GOM(xdr_rejected_reply, iFpp)
+////GOM(xdr_replymsg, iFpp)
+////GO(xdr_rmtcall_args, 
+////GO(xdr_rmtcallres, 
+////GOM(xdr_short, iFpp)
+////GOM(xdr_sizeof, LFpp)
+////GOM(xdrstdio_create, vFpSu)
+////GOM(xdr_string, iFppu)
+////GOM(xdr_u_char, iFpp)
+////GOM(xdr_u_hyper, iFpp)
+////GOM(xdr_u_int, iFpp)
+////GOM(xdr_uint16_t, iFpp)
+////GOM(xdr_uint32_t, iFpp)
+////GOM(xdr_uint64_t, iFpp)
+////GOM(xdr_uint8_t, iFpp)
+////GOM(xdr_u_long, iFpp)
+////GOM(xdr_u_longlong_t, iFpp)
+////GOM(xdr_union, iFppppp)
+////GO(xdr_unixcred, 
+////GOM(xdr_u_quad_t, iFpp)
+////GOM(xdr_u_short, iFpp)
+////GOM(xdr_vector, iFppuup)
+////GO(xdr_void, 
+////GO(xdr_wrapstring, "iF!p")
+//#else
+////GOM(xdr_accepted_reply, iFpp)
+////GOM(xdr_array, iFpppuup)
+////GO(xdr_authdes_cred, 
+////GO(xdr_authdes_verf, 
+////GOM(xdr_authunix_parms, iFpp)
+////GOM(xdr_bool, iFpp)
+////GOM(xdr_bytes, iFpppu)
+////GOM(xdr_callhdr, iFpp)
+////GOM(xdr_callmsg, iFpp)
+////GOM(xdr_char, iFpp)
+////GOM(xdr_cryptkeyarg, iFpp)
+////GOM(xdr_cryptkeyarg2, iFpp)
+////GOM(xdr_cryptkeyres, iFpp)
+////GOM(xdr_des_block, iFpp)
+////GOM(xdr_double, iFpp)
+////GOM(xdr_enum, iFpp)
+////GOM(xdr_float, iFpp)
+//GO(xdr_free, vFpp)
+////GOM(xdr_getcredres, iFpp)
+////GOM(xdr_hyper, iFpp)
+////GOM(xdr_int, iFpp)
+////GOM(xdr_int16_t, iFpp)
+////GOM(xdr_int32_t, iFpp)
+////GOM(xdr_int64_t, iFpp)
+////GOM(xdr_int8_t, iFpp)
+////GOM(xdr_keybuf, iFpp)
+////GOM(xdr_key_netstarg, iFpp)
+////GOM(xdr_key_netstres, iFpp)
+////GOM(xdr_keystatus, iFpp)
+////GOM(xdr_long, iFpp)
+////GOM(xdr_longlong_t, iFpp)
+////GOM(xdrmem_create, vFppuu)
+////GOM(xdr_netnamestr, iFpp)
+////GOM(xdr_netobj, iFpp)
+////GOM(xdr_opaque, iFppu)
+////GOM(xdr_opaque_auth, iFpp)
+////GOM(xdr_pmap, iFpp)
+////GOM(xdr_pmaplist, iFpp)
+////GOM(xdr_pointer, iFppup)
+////GOM(xdr_quad_t, iFpp)
+////GOM(xdrrec_create, vFpuuppp)
+////GOM(xdrrec_endofrecord, iFpi)
+////GOM(xdrrec_eof, iFp)
+////GOM(xdrrec_skiprecord, iFp)
+////GOM(xdr_reference, iFppup)
+////GOM(xdr_rejected_reply, iFpp)
+////GOM(xdr_replymsg, iFpp)
+////GO(xdr_rmtcall_args, 
+////GO(xdr_rmtcallres, 
+////GOM(xdr_short, iFpp)
+////GOM(xdr_sizeof, LFpp)
+////GOM(xdrstdio_create, vFpSu)
+//GO(xdr_string, iFppu)
+////GOM(xdr_u_char, iFpp)
+////GOM(xdr_u_hyper, iFpp)
+////GOM(xdr_u_int, iFpp)
+////GOM(xdr_uint16_t, iFpp)
+////GOM(xdr_uint32_t, iFpp)
+////GOM(xdr_uint64_t, iFpp)
+////GOM(xdr_uint8_t, iFpp)
+////GOM(xdr_u_long, iFpp)
+////GOM(xdr_u_longlong_t, iFpp)
+////GOM(xdr_union, iFppppp)
+////GOM(xdr_unixcred, iFpp)
+////GOM(xdr_u_quad_t, iFpp)
+////GOM(xdr_u_short, iFpp)
+////GOM(xdr_vector, iFppuup)
 //GO(xdr_void, iFv)
-////GO(xdr_wrapstring, iF!p)
-////GO(xencrypt,
-//GO(__xmknod, iFipup)
-//GO(__xmknodat, iFiipup)
+////GOM(xdr_wrapstring, iFpp)
+//#endif
+////GO(xencrypt, 
+//#ifdef STATICBUILD
+////GO(__xmknod, iFipup)
+////GO(__xmknodat, iFiipup)
+//#else
+//GOM(__xmknod, iFipup)
+//GOM(__xmknodat, iFiipup)
+//#endif
 //GO(__xpg_basename, pFp)
 //GOW(__xpg_sigpause, iFi)
 //GO(__xpg_strerror_r, pFipL)
-////GO(xprt_register, vF!)
-////GO(xprt_unregister, vF!)
-//GOM(__xstat, iFEipp)
-//GOM(__xstat64, iFEipp)
+////GOM(xprt_register, vFp)
+////GOM(xprt_unregister, vFp)
+//GOM(__xstat, iFipp)
+//GOM(__xstat64, iFipp)
 //
 //GOM(_Jv_RegisterClasses, vFv)   // dummy
 //
-//GOM(_ITM_addUserCommitAction, vFEpup)
-//GOM(_ITM_registerTMCloneTable, vFEpu)
-//GOM(_ITM_deregisterTMCloneTable, vFEp)
+//GOM(_ITM_addUserCommitAction, vFpup)
+//GOM(_ITM_registerTMCloneTable, vFpu)
+//GOM(_ITM_deregisterTMCloneTable, vFp)
 //
 //GOM(__register_frame_info, vFpp)    // faked function
 //GOM(__deregister_frame_info, pFp)
 //
-//GOM(strlcpy, LFEppL)
-//GOM(strlcat, LFEppL)
+//GOM(strlcpy, LFppL)
+//GOM(strlcat, LFppL)
 //
-//GOWM(__cxa_pure_virtual, vFEv)     // create a function to trap pure virtual call
+//GOWM(__cxa_pure_virtual, vFv)     // create a function to trap pure virtual call
 //
-//DATAM(program_invocation_name, sizeof(void*))
-//DATAM(program_invocation_short_name, sizeof(void*))
+//DATAM(program_invocation_name, 8)
+//DATAM(program_invocation_short_name, 8)
 //
 //DATAM(__libc_single_threaded, 1)
 //
+//#ifdef STATICBUILD
+////GO(iconvctl, 
+//#else
 //GO(iconvctl, iFlip)
+//#endif
 //GO(dummy__ZnwmSt11align_val_tRKSt9nothrow_t, pFLLp) // for mallochook.c
 //
+//GOWM(_ZGTtnaX, pFL) //%noE
+//GOWM(_ZGTtdlPv, vFp)    //%noE
+//GOWM(_ZGTtnam, pFL) //%noE
+//GOWM(_ITM_RU1, CFp) //%noE
+//GOWM(_ITM_RU4, uFp) //%noE
+//GOWM(_ITM_RU8, UFp) //%noE
+//GOWM(_ITM_memcpyRtWn, vFppL)  //%noE
+//GOWM(_ITM_memcpyRnWt, vFppL)  //%noE
+//
+//GOM(__udivti3, HFHH)    //%noE
+//
 //#ifdef ANDROID
-//GOM(__libc_init, vFEpppp)
+//GOM(__libc_init, vFpppp)
 //GO(__errno, pFv)
-//GO(setprogname, vFp)
-//GO(getprogname, pFv)
+//GO(android_set_abort_message, vFp)
 //#else
 //// Those symbols don't exist in non-Android builds
-////GOM(__libc_init,
-////GO(__errno,
-////GO(setprogname,
-////GO(getprogname,
+////GOM(__libc_init, 
+////GO(__errno, 
+////GO(android_set_abort_message, vFp)
 //#endif
-#ifdef CONFIG_LOONGARCH_NEW_WORLD
-GOM(dladdr, iFpp)
-GOM(dladdr1, iFpppi)
-GOM(dlclose, iFp)
-GOM(dlerror, pFv)
-DATAB(_dlfcn_hook, 8)
-GOM(dlinfo, iFpip)
-GOM(dlmopen, pFppi)
-GOM(dlopen, pFpi)
-GOM(dlsym, pFpp)
-GOM(dlvsym, pFppp)   // Weak
-#endif
+//#ifdef STATICBUILD
+//GO(dummy_pFLp, pFLp)
+//GO(dummy_pFpLLp, pFpLLp)
+//// not needed in static build
+////GO(dummy_pFpLLi, pFpLLi)
+////GO(dummy_iFiiULippp, iFiiULippp)
+//#else
+//GO(dummy_pFpLLi, pFpLLi)    //needed for vulkanoverlay
+//GO(dummy_iFiiULippp, iFiiULippp)    //needed for vulkanoverlay
+//// not needed in no-static build
+////GO(dummy_pFLp, pFLp)
+////GO(dummy_pFpLLp, pFpLLp)
+//#endif
+//
+//GO(arc4random, uFv)
+//
+//// dup of libm...
+//GOW(acos, dFd)
+//GOW(acosf, fFf)
+//// GOM(__acosf_finite, fFf)
+//// GOM(__acos_finite, dFd)
+//GOW(acosh, dFd)
+//GOW(acoshf, fFf)
+//// GOM(__acoshf_finite, fFf)
+//// GOM(__acosh_finite, dFd)
+//GOWD(acoshl, DFD, acosh)
+//GOWD(acosl, DFD, acos)
+//GOW(asin, dFd)
+//GOW(asinf, fFf)
+//// GOM(__asinf_finite, fFf)
+//// GOM(__asin_finite, dFd)
+//GOW(asinh, dFd)
+//GOW(asinhf, fFf)
+//GOWD(asinhl, DFD, asinh)
+//GOWD(asinl, DFD, asin)
+//GO(atan, dFd)
+//GOW(atan2, dFdd)
+//GOW(atan2f, fFff)
+//// GOM(__atan2f_finite, fFff)
+//// GOM(__atan2_finite, dFdd)
+//GOWD(atan2l, DFDD, atan2)
+//GOW(atanf, fFf)
+//GOW(atanh, dFd)
+//GOW(atanhf, fFf)
+//// __atanhf_finite
+//// __atanh_finite
+//GOWD(atanhl, DFD, atanh)
+//GOWD(atanl, DFD, atan)
+//#ifdef STATICBUILD
+//// GOW(cabs, dFX)
+//// GOW(cabsf, fFx)
+//// GOWD(cabsl, DFY, cabs)
+//// GOW(cacos, XFX)
+//// GOW(cacosf, xFx)
+//// GOW(cacosh, XFX)
+//// GOW(cacoshf, xFx)
+//// GOWD(cacoshl, YFY, cacosh)
+//// GOWD(cacosl, YFY, cacos)
+//// GOW(carg, dFX)
+//// GOW(cargf, fFx)
+//// // cargl    // Weak
+//// GOW(casin, XFX)
+//// GOW(casinf, xFx)
+//// GOW(casinh, XFX)
+//// GOW(casinhf, xFx)
+//// GOWD(casinhl, YFY, casinh)
+//// GOWD(casinl, YFY, casin)
+//// GOW(catan, XFX)
+//// GOW(catanf, xFx)
+//// GOW(catanh, XFX)
+//// GOW(catanhf, xFx)
+//// GOWD(catanhl, YFY, catanh)
+//// GOWD(catanl, YFY, catan)
+//// GOW(cbrt, dFd)
+//// GOW(cbrtf, fFf)
+//// GOWD(cbrtl, DFD, cbrt)
+//// GOW(ccos, XFX)
+//// GOW(ccosf, xFx)
+//// GOW(ccosh, XFX)
+//// GOW(ccoshf, xFx)
+//// GOWD(ccoshl, YFY, ccosh)
+//// GOWD(ccosl, YFY, ccos)
+//// GOW(ceil, dFd)
+//// GOW(ceilf, fFf)
+//// GOWD(ceill, DFD, ceil)
+//// GOW(cexp, XFX)
+//// GOW(cexpf, xFx)
+//// GOWD(cexpl, YFY, cexp)
+//// GOW(clog, XFX)
+//// GOW(clogf, xFx)
+//// GOWD(clogl, YFY, clog)
+//// GOW(cpow, XFXX)
+//// GOW(cpowf, xFxx)
+//// GOWD(cpowl, YFYY, cpow)
+//// GOW(cproj, XFX)
+//// GOW(cprojf, xFx)
+//// GOW(csin, XFX)
+//// GOW(csinf, xFx)
+//// GOW(csinh, XFX)
+//// GOW(csinhf, xFx)
+//// GOWD(csinhl, YFY, csinh)
+//// GOWD(csinl, YFY, csin)
+//// GOW(csqrt, XFX)
+//// GOW(csqrtf, xFx)
+//// GOWD(csqrtl, YFY, csqrt)
+//// GOW(ctan, XFX)
+//// GOW(ctanf, xFx)
+//// GOW(ctanh, XFX)
+//// GOW(ctanhf, xFx)
+//// GOWD(ctanhl, YFY, ctanh)
+//// GOWD(ctanl, YFY, ctan)
+//#else
+//GOW(cabs, dFX)
+//GOW(cabsf, fFx)
+//GOWD(cabsl, DFY, cabs)
+//GOW(cacos, XFX)
+//GOW(cacosf, xFx)
+//GOW(cacosh, XFX)
+//GOW(cacoshf, xFx)
+//GOWD(cacoshl, YFY, cacosh)
+//GOWD(cacosl, YFY, cacos)
+//GOW(carg, dFX)
+//GOW(cargf, fFx)
+//// cargl    // Weak
+//GOW(casin, XFX)
+//GOW(casinf, xFx)
+//GOW(casinh, XFX)
+//GOW(casinhf, xFx)
+//GOWD(casinhl, YFY, casinh)
+//GOWD(casinl, YFY, casin)
+//GOW(catan, XFX)
+//GOW(catanf, xFx)
+//GOW(catanh, XFX)
+//GOW(catanhf, xFx)
+//GOWD(catanhl, YFY, catanh)
+//GOWD(catanl, YFY, catan)
+//GOW(cbrt, dFd)
+//GOW(cbrtf, fFf)
+//GOWD(cbrtl, DFD, cbrt)
+//GOW(ccos, XFX)
+//GOW(ccosf, xFx)
+//GOW(ccosh, XFX)
+//GOW(ccoshf, xFx)
+//GOWD(ccoshl, YFY, ccosh)
+//GOWD(ccosl, YFY, ccos)
+//GOW(ceil, dFd)
+//GOW(ceilf, fFf)
+//GOWD(ceill, DFD, ceil)
+//GOW(cexp, XFX)
+//GOW(cexpf, xFx)
+//GOWD(cexpl, YFY, cexp)
+//GOW(clog, XFX)
+//GOW(clogf, xFx)
+//GOWD(clogl, YFY, clog)
+//GOW(cpow, XFXX)
+//GOW(cpowf, xFxx)
+//GOWD(cpowl, YFYY, cpow)
+//GOW(cproj, XFX)
+//GOW(cprojf, xFx)
+//GOW(csin, XFX)
+//GOW(csinf, xFx)
+//GOW(csinh, XFX)
+//GOW(csinhf, xFx)
+//GOWD(csinhl, YFY, csinh)
+//GOWD(csinl, YFY, csin)
+//GOW(csqrt, XFX)
+//GOW(csqrtf, xFx)
+//GOWD(csqrtl, YFY, csqrt)
+//GOW(ctan, XFX)
+//GOW(ctanf, xFx)
+//GOW(ctanh, XFX)
+//GOW(ctanhf, xFx)
+//GOWD(ctanhl, YFY, ctanh)
+//GOWD(ctanl, YFY, ctan)
+//#endif
+//GOW(copysign, dFdd)
+//GOW(copysignf, fFff)
+//GOWD(copysignl, DFDD, copysign)
+//GOW(cos, dFd)
+//GOW(cosf, fFf)
+//GOW(cosh, dFd)
+//GOW(coshf, fFf)
+//// GOM(__coshf_finite, fFf)
+//// GOM(__cosh_finite, dFd)
+//GOWD(coshl, DFD, cosh)
+//GOWD(cosl, DFD, cos)
+//// __cxa_finalize  // Weak
+//GOW(drem, dFdd)
+//GOW(dremf, fFff)
+////GOW(dreml, 
+//GOW(erf, dFd)
+//GOW(erfc, dFd)
+//GOW(erfcf, fFf)
+//GOWD(erfcl, DFD, erfc)
+//GOW(erff, fFf)
+//GOWD(erfl, DFD, erf)
+//GOW(exp, dFd)
+//GOW(exp10, dFd)
+//GOW(exp10f, fFf)
+//// __exp10f_finite
+//// __exp10_finite
+//// exp10l   // Weak
+//GOW(exp2, dFd)
+//GOW(exp2f, fFf)
+//// GOM(__exp2f_finite, fFf)
+//// GOM(__exp2_finite, dFd)
+//GOWD(exp2l, DFD, exp2)
+//GOW(expf, fFf)
+//// GOM(__expf_finite, fFf)
+//// GOM(__exp_finite, dFd)
+//GOWD(expl, DFD, exp)
+//GOW(expm1, dFd)
+//GOW(expm1f, fFf)
+//GOWD(expm1l, DFD, expm1)
+//GOW(fabs, dFd)
+//GOW(fabsf, fFf)
+//GOWD(fabsl, DFD, fabs)
+//GOW(fdim, dFdd)
+//GOW(fdimf, fFff)
+//#ifdef STATICBUILD
+//// GOM(feclearexcept, iFi)
+//// GO(fedisableexcept, iFi)
+//// GO(feenableexcept, iFi)
+//// GO(fegetenv, iFp)
+//// GO(fegetexcept, iFv)
+//// GO(fegetexceptflag, iFpi)
+//// GOM(fegetround, iFv)
+//// GO(feholdexcept, iFp)
+//// GOM(feraiseexcept, iFi)
+//// GOM(fesetenv, iFp)
+//// GO(fesetexceptflag, iFpi)
+//// GOM(fesetround, iFi)
+//// GOM(fetestexcept, iFi)
+//// GOM(feupdateenv, iFp)
+//#else
+//// GOM(feclearexcept, iFi)
+//GO(fedisableexcept, iFi)
+//GO(feenableexcept, iFi)
+//GO(fegetenv, iFp)
+//GO(fegetexcept, iFv)
+//GO(fegetexceptflag, iFpi)
+//// GOM(fegetround, iFv)
+//GO(feholdexcept, iFp)
+//// GOM(feraiseexcept, iFi)
+//// GOM(fesetenv, iFp)
+//GO(fesetexceptflag, iFpi)
+//// GOM(fesetround, iFi)
+//// GOM(fetestexcept, iFi)
+//// GOM(feupdateenv, iFp)
+//#endif
+//GOW(finite, iFd)
+//GO(__finite, iFd)
+//GOW(finitef, iFf)
+//GO(__finitef, iFf)
+//GOD(__finitel, iFD, __finite)
+//GOWD(finitel, iFD, finite)
+//GOW(floor, dFd)
+//GOW(floorf, fFf)
+//GOWD(floorl, DFD, floor)
+//GOW(fma, dFddd)
+//GOW(fmaf, fFfff)
+//GOWD(fmal, DFDDD, fma)
+//GOW(fmax, dFdd)
+//GOW(fmaxf, fFff)
+//GOWD(fmaxl, DFDD, fmax)
+//GOW(fmin, dFdd)
+//GOW(fminf, fFff)
+//GOWD(fminl, DFDD, fmin)
+//GOW(fmod, dFdd)
+//GOW(fmodf, fFff)
+//// GOM(__fmodf_finite, fFff)
+//// GOM(__fmod_finite, dFdd)
+//GOWD(fmodl, DFDD, fmod)
+//GO(__fpclassify, iFd)
+//GO(__fpclassifyf, iFf)
+//GOW(frexp, dFdp)
+//GOW(frexpf, fFfp)
+//GOWD(frexpl, DFDp, frexp)
+//GOW(gamma, dFd)
+//GOW(gammaf, fFf)
+//// __gammaf_r_finite
+//// gammal   // Weak
+//// __gamma_r_finite
+//// __gmon_start__  // Weak
+//GOW(hypot, dFdd)
+//GOW(hypotf, fFff)
+//// GOM(__hypotf_finite, fFff)
+//// GOM(__hypot_finite, dFdd)
+//GOWD(hypotl, DFDD, hypot)
+//GOW(ilogb, iFd)
+//GOW(ilogbf, iFf)
+//// ilogbl   // Weak
+//// __issignaling
+//// __issignalingf
+//// _ITM_deregisterTMCloneTable // Weak
+//// _ITM_registerTMCloneTable   // Weak
+//GO(j0, dFd)
+//GO(j0f, fFf)
+//// __j0f_finite
+//// __j0_finite
+//// j0l
+//GO(j1, dFd)
+//GO(j1f, fFf)
+//// __j1f_finite
+//// __j1_finite
+//// j1l
+//GO(jn, dFid)
+//GO(jnf, fFif)
+//// __jnf_finite
+//// __jn_finite
+//GOD(jnl, DFiD, jn)
+//GOW(ldexp, dFdi)
+//GOW(ldexpf, fFfi)
+//GOWD(ldexpl, DFDi, ldexp)
+//GOW(lgamma, dFd)
+//GOW(lgammaf, fFf)
+//GOW(lgammaf_r, fFfp)
+//// __lgammaf_r_finite
+//GOWD(lgammal, DFD, lgamma)
+//GOWD(lgammal_r, DFDp, lgamma_r)
+//GOW(lgamma_r, dFdp)
+//// __lgamma_r_finite
+//#ifdef STATICBUILD
+////DATAV(_LIB_VERSION, 8)
+//#else
+//DATAV(_LIB_VERSION, 8)
+//#endif
+//// GOWM(llrint, IFd)
+//// GOWM(llrintf, IFf)
+//// GOWM(llrintl, IFD)
+//GOW(llround, IFd)
+//GOW(llroundf, IFf)
+//GOWD(llroundl, IFD, llround)
+//GOW(log, dFd)
+//GOW(log10, dFd)
+//GOW(log10f, fFf)
+//// GOM(__log10f_finite, fFf)
+//// GOM(__log10_finite, dFd)
+//GOWD(log10l, DFD, log10)
+//GOW(log1p, dFd)
+//GOW(log1pf, fFf)
+//GOWD(log1pl, DFD, log1p)
+//GOW(log2, dFd)
+//GOW(log2f, fFf)
+//// GOM(__log2f_finite, fFf)
+//// GOM(__log2_finite, dFd)
+//GOWD(log2l, DFD, log2)
+//GOW(logb, dFd)
+//GOW(logbf, fFf)
+//// logbl    // Weak
+//GOW(logf, fFf)
+//// GOM(__logf_finite, fFf)
+//// GOM(__log_finite, dFd)
+//GOWD(logl, DFD, log)
+//// GOWM(lrint, lFd)
+//// GOWM(lrintf, lFf)
+//// lrintl   // Weak
+//GOW(lround, lFd)
+//GOW(lroundf, lFf)
+//GOWD(lroundl, lFD, lround)
+//// matherr  // Weak
+//GOW(modf, dFdp)
+//GOW(modff, fFfp)
+//GOWD(modfl, DFDp, modf)
+//GOW(nan, dFp)
+//GOW(nanf, fFp)
+//// nanl // Weak
+//// GOWM(nearbyint, dFd)
+//// GOWM(nearbyintf, fFf)
+//// nearbyintl   // Weak
+//GOW(nextafter, dFdd)
+//GOW(nextafterf, fFff)
+//// GOWD(nextafterl, DFDD, nextafter)
+//// GOWD(nexttoward, dFdD, my_nexttoward) // This loses precision
+//// GOWD(nexttowardf, fFfD, my_nexttowardf) // This loses precision
+//// nexttowardl  // Weak
+//GOW(pow, dFdd)
+//// GOWM(pow10, dFd)
+//// GOWM(pow10f, fFf)
+//// GOWM(pow10l, DFD)
+//GOW(powf, fFff)
+//// GOM(__powf_finite, fFff)
+//// GOM(__pow_finite, dFdd)
+//// GOM(__powl_finite, DFDD)
+//GOWD(powl, DFDD, pow)
+//GOW(remainder, dFdd)
+//GOW(remainderf, fFff)
+//// __remainderf_finite
+//// __remainder_finite
+//// remainderl   // Weak
+//GOW(remquo, dFddp)
+//GOW(remquof, fFffp)
+//// remquol  // Weak
+//// GOWM(rint, dFd)
+//// GOWM(rintf, fFf)
+//GOWD(rintl, DFD, rint)
+//GOW(round, dFd)
+//GOW(roundf, fFf)
+//GO(roundeven, dFd)  //since C23
+//GO(roundevenf, fFf)
+////GOD(roundevenl, DFD, )
+//GOWD(roundl, DFD, round)
+//GOW(scalb, dFdd)
+//GOW(scalbf, fFff)
+//// __scalbf_finite
+//// __scalb_finite
+//// scalbl   // Weak
+//GOW(scalbln, dFdl)
+//GOW(scalblnf, fFfl)
+//// scalblnl // Weak
+//GOW(scalbn, dFdi)
+//GOW(scalbnf, fFfi)
+//GOWD(scalbnl, DFDi, scalbn)
+//// __signbit
+//// __signbitf
+//DATAB(signgam, 8)
+//GOW(significand, dFd)
+//GOW(significandf, fFf)
+//// significandl // Weak
+//GOW(sin, dFd)
+//GOW(sincos, vFdpp)
+//GOW(sincosf, vFfpp)
+//GOWD(sincosl, vFDpp, sincos)
+//GOW(sinf, fFf)
+//GOW(sinh, dFd)
+//GOW(sinhf, fFf)
+//// GOM(__sinhf_finite, fFf)
+//// GOM(__sinh_finite, dFd)
+//GOWD(sinhl, DFD, sinh)
+//GOWD(sinl, DFD, sin)
+//GOW(sqrt, dFd)
+//GOW(sqrtf, fFf)
+//// GOM(__sqrtf_finite, fFf)
+//// GOM(__sqrt_finite, dFd)
+//GOWD(sqrtl, DFD, sqrt)
+//GO(tan, dFd)
+//GOW(tanf, fFf)
+//GOW(tanh, dFd)
+//GOW(tanhf, fFf)
+//GOWD(tanhl, DFD, tanh)
+//GOWD(tanl, DFD, tan)
+//GOW(tgamma, dFd)
+//GOW(tgammaf, fFf)
+//GOWD(tgammal, DFD, tgamma)
+//GOW(trunc, dFd)
+//GOW(truncf, fFf)
+//GOWD(truncl, DFD, trunc)
+//GO(y0, dFd)
+//GO(y0f, fFf)
+//// __y0f_finite
+//// __y0_finite
+//// y0l
+//GO(y1, dFd)
+//GO(y1f, fFf)
+//// __y1f_finite
+//// __y1_finite
+//// y1l
+//GO(yn, dFid)
+//GO(ynf, fFif)
+//// __ynf_finite
+//// __yn_finite
+//GOD(ynl, DFiD, yn)
