@@ -16,6 +16,19 @@
 #define DOIT(P,Q) _DOIT(P,Q)
 #include DOIT(LIBNAME,defs)
 
+// regular symbol mapped to itself or another one (depending on HAVE_LD80BITS)
+#ifdef HAVE_LD80BITS
+#define GOD(N, W, O) GO(N, W)
+#else
+#define GOD(N, W, O) GO2(N, W, O)
+#endif
+// regular symbol mapped to itself or another one (depending on HAVE_LD80BITS), but weak
+#ifdef HAVE_LD80BITS
+#define GOWD(N, W, O) GOW(N, W)
+#else
+#define GOWD(N, W, O) GOW2(N, W, O)
+#endif
+
 // regular symbol mapped to itself
 #undef GO
 #define GO(N, W)
@@ -29,6 +42,8 @@
 #define GOS(N, W)
 // symbol mapped to another one
 #define GO2(N, W, O)
+// symbol mapped to another one, but weak
+#define GOW2(N, W, O)
 // data
 #define DATA(N, S)
 // data, Weak (type V)
