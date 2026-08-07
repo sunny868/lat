@@ -3008,20 +3008,20 @@ void pFbuuuuuwwuuuuUUUup(uintptr_t fcn) { __CPU; pFbuuuuuwwuuuuUUUup_t fn = (pFb
 
 #define ST0val (cpu->fpregs[cpu->fpstt].d)
 static void* io_convert(void* v) {
-  fprintf(stderr, "TODO: io_convert\n");
-  assert(0);
+  fprintf(stderr, "TODO: io_convert v=%p\n", v);
+  asm volatile("break 0x5\n":::"memory");
   return v;
 }
 
 static void* io_convert_back(void* v) {
-  fprintf(stderr, "TODO: io_convert_back\n");
-  assert(0);
+  fprintf(stderr, "TODO: io_convert_back v=%p\n", v);
+  asm volatile("break 0x5\n":::"memory");
   return v;
 }
 
 static floatx80 long_double_to_floatx80(long double value) {
   fprintf(stderr, "TODO: long_double_to_floatx80\n");
-  assert(0);
+  asm volatile("break 0x5\n":::"memory");
   floatx80 a;
   a.high = 0x3FFF;
   a.low = 0x8000000000000000ULL;
