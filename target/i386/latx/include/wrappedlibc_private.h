@@ -787,9 +787,9 @@ GO(__h_errno_location, pFv)
 //GO(hstrerror, pFi)
 //GO(htonl, uFu)
 //GO(htons, WFW)
-//GO(iconv, LFppppp)
-//GO(iconv_close, iFp)
-//GO(iconv_open, pFpp)
+GO(iconv, LFppppp)
+GO(iconv_close, iFp)
+GO(iconv_open, pFpp)
 ////GO(__idna_from_dns_encoding, 
 ////GO(__idna_to_dns_encoding, 
 //GOW(if_freenameindex, vFp)
